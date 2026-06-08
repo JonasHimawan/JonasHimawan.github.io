@@ -4,825 +4,314 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jonas Himawan — ECE Portfolio</title>
-<!-- SF Pro loads from the system on Apple devices; fallback chain for Windows/Android -->
 <style>
-  @font-face {
-    font-family: 'SF Pro Display';
-    src: local('SF Pro Display'), local('.SFNSDisplay'), local('SFProDisplay-Regular')
-    font-weight: 400;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'SF Pro Display';
-    src: local('SF Pro Display Medium'), local('.SFNSDisplay-Medium'), local('SFProDisplay-Medium');
-    font-weight: 500;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'SF Pro Display';
-    src: local('SF Pro Display Semibold'), local('.SFNSDisplay-Semibold'), local('SFProDisplay-Semibold');
-    font-weight: 600;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'SF Pro Display';
-    src: local('SF Pro Display Bold'), local('.SFNSDisplay-Bold'), local('SFProDisplay-Bold');
-    font-weight: 700;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'SF Pro Display';
-    src: local('SF Pro Display Heavy'), local('.SFNSDisplay-Heavy'), local('SFProDisplay-Heavy');
-    font-weight: 800;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'SF Pro Text';
-    src: local('SF Pro Text'), local('.SFNSText'), local('SFProText-Regular');
-    font-weight: 400;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'SF Pro Text';
-    src: local('SF Pro Text Medium'), local('.SFNSText-Medium'), local('SFProText-Medium');
-    font-weight: 500;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'SF Pro Text';
-    src: local('SF Pro Text Semibold'), local('.SFNSText-Semibold'), local('SFProText-Semibold');
-    font-weight: 600;
-    font-style: normal;
-  }
-</style>
-<style>
-/* ─── RESET & BASE ─── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 16px; }
+@font-face { font-family:'SF Pro Display'; src:local('SF Pro Display'),local('.SFNSDisplay'),local('SFProDisplay-Regular'); font-weight:400; }
+@font-face { font-family:'SF Pro Display'; src:local('SF Pro Display Medium'),local('.SFNSDisplay-Medium'); font-weight:500; }
+@font-face { font-family:'SF Pro Display'; src:local('SF Pro Display Semibold'),local('.SFNSDisplay-Semibold'); font-weight:600; }
+@font-face { font-family:'SF Pro Display'; src:local('SF Pro Display Bold'),local('.SFNSDisplay-Bold'); font-weight:700; }
+@font-face { font-family:'SF Pro Text'; src:local('SF Pro Text'),local('.SFNSText'),local('SFProText-Regular'); font-weight:400; }
+@font-face { font-family:'SF Pro Text'; src:local('SF Pro Text Medium'),local('.SFNSText-Medium'); font-weight:500; }
+@font-face { font-family:'SF Pro Text'; src:local('SF Pro Text Semibold'),local('.SFNSText-Semibold'); font-weight:600; }
 
-:root {
-  --white:   #ffffff;
-  --off:     #f7f6f4;
-  --purple:  #1e0a3c;
-  --purple2: #2d1260;
-  --grape:   #4b2e83;  /* UW purple */
-  --violet:  #7c5cbf;
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+
+:root{
+  --white:#ffffff;
+  --off:#f7f6f4;
+  --purple:#1e0a3c;
+  --grape:#4b2e83;
+  --violet:#7c5cbf;
   --lavender:#c4b5e8;
-  --black:   #0a0a0a;
-  --gray:    #6b6b6b;
-  --lgray:   #e8e6f0;
-  --border:  #e0dcea;
-}
-
-body {
-  background: var(--white);
-  color: var(--black);
-  font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-  overflow-x: hidden;
-}
-
-/* ─── NAV ─── */
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 200;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 22px 52px;
-  mix-blend-mode: normal;
-  transition: background 0.4s, border-bottom 0.4s;
-}
-
-nav.scrolled {
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border);
-}
-
-.nav-logo {
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--white);
-  letter-spacing: -0.02em;
-  transition: color 0.4s;
-}
-
-nav.scrolled .nav-logo { color: var(--purple); }
-
-.nav-links {
-  display: flex;
-  gap: 36px;
-  list-style: none;
-}
-
-.nav-links a {
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.7);
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-nav.scrolled .nav-links a { color: var(--gray); }
-.nav-links a:hover { color: var(--white) !important; }
-nav.scrolled .nav-links a:hover { color: var(--purple) !important; }
-
-.nav-cta {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--white);
-  text-decoration: none;
-  border: 1.5px solid rgba(255,255,255,0.5);
-  padding: 9px 20px;
-  transition: all 0.3s;
-}
-
-nav.scrolled .nav-cta {
-  color: var(--purple);
-  border-color: var(--purple);
-}
-
-.nav-cta:hover {
-  background: var(--white);
-  color: var(--purple) !important;
-  border-color: var(--white);
-}
-
-nav.scrolled .nav-cta:hover {
-  background: var(--purple);
-  color: var(--white) !important;
-  border-color: var(--purple);
-}
-
-/* ─── HERO: SCROLL-OPENING GRAPHIC ─── */
-.hero-wrap {
-  position: relative;
-  height: 300vh; /* tall enough to scroll through */
-}
-
-.hero-sticky {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Dark purple background that shrinks as you scroll */
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background: var(--purple);
-  z-index: 0;
-}
-
-/* The "window" that opens — clips to reveal white content below */
-.hero-window {
-  position: absolute;
-  /* starts as full screen, shrinks to a rectangle then expands differently */
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: var(--purple);
-  z-index: 2;
-  transform-origin: center center;
-  /* controlled by JS */
-  --clip-x: 0%;
-  --clip-y: 0%;
-  clip-path: inset(var(--clip-y) var(--clip-x) var(--clip-y) var(--clip-x) round 0px);
-}
-
-/* White inner reveal behind the purple window */
-.hero-reveal-bg {
-  position: absolute;
-  inset: 0;
-  background: var(--white);
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Profile card that appears as window opens */
-.profile-card {
-  text-align: center;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.5s, transform 0.5s;
-}
-
-.profile-card.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.profile-avatar {
-  width: 220px;
-  height: 220px;
-  border-radius: 50%;
-  background: var(--lgray);
-  border: 3px solid var(--lavender);
-  margin: 0 auto 20px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.profile-avatar svg { width: 64px; height: 64px; opacity: 0.3; }
-
-/* ─── Replace with: <img src="your-photo.jpg" alt="Jonas Himawan" style="width:100%;height:100%;object-fit:cover"> ─── */
-.profile-name-reveal {
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  font-size: clamp(36px, 5vw, 68px);
-  font-weight: 700;
-  color: var(--purple);
-  letter-spacing: -0.03em;
-  line-height: 1;
-}
-
-.profile-sub-reveal {
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--violet);
-  margin-top: 10px;
-}
-
-/* Hero text on purple */
-.hero-text-layer {
-  position: relative;
-  z-index: 3;
-  text-align: center;
-  padding: 80px 40px 0;
-  pointer-events: none;
-}
-
-.hero-eyebrow {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--lavender);
-  margin-bottom: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
-.hero-eyebrow::before,
-.hero-eyebrow::after {
-  content: '';
-  width: 32px;
-  height: 1px;
-  background: var(--lavender);
-  opacity: 0.5;
-}
-
-.hero-headline {
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  font-size: clamp(38px, 6vw, 80px);
-  font-weight: 500;
-  color: var(--white);
-  letter-spacing: -0.03em;
-  line-height: 0.97;
-}
-
-.hero-headline em {
-  font-style: normal;
-  color: var(--lavender);
-}
-
-.hero-desc {
-  margin-top: 28px;
-  font-size: 15px;
-  line-height: 1.75;
-  color: rgba(255,255,255,0.55);
-  max-width: 460px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.hero-scroll-hint {
-  position: absolute;
-  bottom: 36px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
-  pointer-events: none;
-  transition: opacity 0.5s;
-}
-
-.scroll-arrow {
-  width: 20px;
-  height: 20px;
-  border-right: 1.5px solid rgba(255,255,255,0.3);
-  border-bottom: 1.5px solid rgba(255,255,255,0.3);
-  transform: rotate(45deg);
-  animation: bounce 1.8s ease-in-out infinite;
-  margin-top: -4px;
-}
-
-@keyframes bounce {
-  0%,100% { transform: rotate(45deg) translateY(0); }
-  50%      { transform: rotate(45deg) translateY(5px); }
-}
-
-/* ─── SECTIONS ─── */
-.section {
-  padding: 110px 52px;
-  position: relative;
-}
-
-.section-dark {
-  background: var(--purple);
-  color: var(--white);
-}
-
-.section-off {
-  background: var(--off);
-}
-
-.section-white {
-  background: var(--white);
-}
-
-.section-label {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--violet);
-  margin-bottom: 12px;
-}
-
-.section-dark .section-label { color: var(--lavender); }
-
-.section-title {
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  font-size: clamp(32px, 4vw, 58px);
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
-  color: var(--purple);
-  max-width: 700px;
-}
-
-.section-dark .section-title { color: var(--white); }
-
-/* ─── ABOUT SPLIT ─── */
-.about-split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: start;
-  margin-top: 56px;
-}
-
-.about-text {
-  font-size: 16px;
-  line-height: 1.85;
-  color: #444;
-}
-
-.about-text p + p { margin-top: 18px; }
-
-.about-text strong { color: var(--purple); font-weight: 600; }
-
-/* Stats */
-.stats-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-}
-
-.stat-box {
-  background: var(--white);
-  padding: 32px 28px;
-  transition: background 0.25s;
-}
-
-.stat-box:hover { background: var(--off); }
-
-.stat-num {
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  font-size: 42px;
-  font-weight: 700;
-  color: var(--purple);
-  letter-spacing: -0.04em;
-  line-height: 1;
-}
-
-.stat-label {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gray);
-  margin-top: 6px;
-}
-
-/* Courses */
-.courses-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 28px;
-}
-
-.course-pill {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  padding: 7px 15px;
-  border: 1px solid var(--border);
-  color: var(--gray);
-  background: var(--off);
-  transition: all 0.2s;
-}
-
-.course-pill:hover {
-  border-color: var(--grape);
-  color: var(--purple);
-  background: var(--white);
-}
-
-/* ─── EXPERIENCE: HORIZONTAL SCROLL ─── */
-.exp-section { overflow: hidden; }
-
-.exp-track-wrap {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  cursor: grab;
-  user-select: none;
-  margin-top: 52px;
-}
-
-.exp-track-wrap:active { cursor: grabbing; }
-.exp-track-wrap::-webkit-scrollbar { display: none; }
-
-.exp-track {
-  display: flex;
-  gap: 2px;
-  width: max-content;
-  padding-bottom: 4px;
-}
-
-.exp-card {
-  width: 380px;
-  flex-shrink: 0;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
-  padding: 36px 32px;
-  transition: border-color 0.3s, background 0.3s;
-  position: relative;
-  overflow: hidden;
-}
-
-.exp-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--lavender), var(--violet));
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.35s;
-}
-
-.exp-card:hover { border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.09); }
-.exp-card:hover::before { transform: scaleX(1); }
-
-.exp-period {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--lavender);
-  margin-bottom: 16px;
-}
-
-.exp-title {
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--white);
-  letter-spacing: -0.02em;
-  margin-bottom: 6px;
-  line-height: 1.15;
-}
-
-.exp-org {
-  font-size: 12px;
-  font-weight: 500;
-  color: var(--lavender);
-  margin-bottom: 20px;
-  opacity: 0.8;
-}
-
-.exp-bullets {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.exp-bullets li {
-  font-size: 13.5px;
-  line-height: 1.65;
-  color: rgba(255,255,255,0.55);
-  padding-left: 14px;
-  position: relative;
-}
-
-.exp-bullets li::before {
-  content: '—';
-  position: absolute;
-  left: 0;
-  color: var(--lavender);
-  font-size: 10px;
-  top: 5px;
-}
-
-.exp-drag-hint {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.25);
-  margin-top: 20px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.exp-drag-hint::before { content: '←'; }
-.exp-drag-hint::after  { content: '→'; }
-
-/* ─── SKILLS ─── */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  margin-top: 52px;
-}
-
-.skill-item {
-  background: var(--white);
-  padding: 24px 28px;
-  transition: background 0.22s;
-  position: relative;
-}
-
-.skill-item:hover { background: var(--off); }
-
-.skill-cat {
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--violet);
-  margin-bottom: 8px;
-}
-
-.skill-name {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--purple);
-}
-
-/* ─── PROJECTS ─── */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  margin-top: 52px;
-}
-
-.project-card {
-  background: var(--white);
-  overflow: hidden;
-  transition: background 0.25s;
-  position: relative;
-}
-
-.project-card:hover { background: var(--off); }
-
-/* Image area */
-.project-img {
-  width: 100%;
-  aspect-ratio: 16/9;
-  overflow: hidden;
-  position: relative;
-  background: var(--lgray);
-}
-
-.project-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.project-card:hover .project-img img { transform: scale(1.05); }
-
-/* Placeholder */
-.project-placeholder {
-  width: 100%;
-  aspect-ratio: 16/9;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background: var(--lgray);
-  position: relative;
-  overflow: hidden;
-}
-
-.project-placeholder::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(75,46,131,0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(75,46,131,0.07) 1px, transparent 1px);
-  background-size: 32px 32px;
-}
-
-.ph-icon { width: 40px; height: 40px; opacity: 0.2; position: relative; z-index: 1; }
-.ph-txt {
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--gray);
-  position: relative;
-  z-index: 1;
-}
-
-.project-body { padding: 28px 28px 20px; }
-
-.project-tags {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  margin-bottom: 12px;
-}
-
-.project-tag {
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 4px 10px;
-  background: var(--lgray);
-  color: var(--grape);
-}
-
-.project-title {
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--purple);
-  letter-spacing: -0.02em;
-  margin-bottom: 10px;
-}
-
-.project-desc {
-  font-size: 13.5px;
-  line-height: 1.7;
-  color: var(--gray);
-}
-
-.project-footer {
-  padding: 14px 28px 20px;
-  display: flex;
-  gap: 16px;
-  border-top: 1px solid var(--border);
-  margin-top: 16px;
-}
-
-.project-link {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--purple);
-  text-decoration: none;
-  border-bottom: 1px solid currentColor;
-  padding-bottom: 1px;
-  transition: opacity 0.2s;
-}
-
-.project-link:hover { opacity: 0.5; }
-
-/* ─── CONTACT ─── */
-.contact-inner { max-width: 640px; margin: 0 auto; text-align: center; }
-
-.contact-email {
-  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  font-size: clamp(28px, 4vw, 52px);
-  font-weight: 600;
-  color: var(--white);
-  letter-spacing: -0.03em;
-  text-decoration: none;
-  display: block;
-  margin: 48px 0 40px;
-  transition: color 0.25s;
-}
-
-.contact-email:hover { color: var(--lavender); }
-
-.contact-links {
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-  flex-wrap: wrap;
-}
-
-.contact-link {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
-  text-decoration: none;
-  transition: color 0.25s;
-}
-
-.contact-link:hover { color: var(--white); }
-
-/* ─── FOOTER ─── */
-footer {
-  background: var(--black);
-  padding: 28px 52px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer-txt {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
-}
-
-/* ─── DIVIDER ─── */
-.divider {
-  height: 1px;
-  background: var(--border);
-}
-
-.divider-dark {
-  height: 1px;
-  background: rgba(255,255,255,0.08);
-}
-
-/* ─── SCROLL REVEAL ─── */
-.reveal {
-  opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.75s ease, transform 0.75s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ─── RESPONSIVE ─── */
-@media (max-width: 860px) {
-  nav { padding: 16px 24px; }
-  .nav-links { display: none; }
-  .section { padding: 72px 24px; }
-  .about-split { grid-template-columns: 1fr; gap: 48px; }
-  footer { padding: 20px 24px; flex-direction: column; gap: 8px; }
+  --black:#0a0a0a;
+  --gray:#6b6b6b;
+  --lgray:#e8e6f0;
+  --border:#e0dcea;
+  --rain-bg:#0d0820;
+}
+
+body{
+  background:var(--white);
+  color:var(--black);
+  font-family:'SF Pro Text',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  overflow-x:hidden;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:22px 52px;
+  transition:background .4s,border-bottom .4s;
+}
+nav.scrolled{background:rgba(255,255,255,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:'SF Pro Display',-apple-system,system-ui,sans-serif;font-size:15px;font-weight:600;color:var(--white);letter-spacing:-.02em;transition:color .4s;}
+nav.scrolled .nav-logo{color:var(--purple);}
+.nav-links{display:flex;gap:36px;list-style:none;}
+.nav-links a{font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.7);text-decoration:none;transition:color .3s;}
+nav.scrolled .nav-links a{color:var(--gray);}
+.nav-links a:hover{color:var(--white)!important;}
+nav.scrolled .nav-links a:hover{color:var(--purple)!important;}
+.nav-cta{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--white);text-decoration:none;border:1.5px solid rgba(255,255,255,.5);padding:9px 20px;transition:all .3s;}
+nav.scrolled .nav-cta{color:var(--purple);border-color:var(--purple);}
+.nav-cta:hover{background:var(--white);color:var(--purple)!important;border-color:var(--white);}
+nav.scrolled .nav-cta:hover{background:var(--purple);color:var(--white)!important;}
+
+/* ── MUSIC PLAYER ── */
+#music-player{
+  position:fixed;bottom:28px;right:28px;z-index:300;
+  background:rgba(14,8,32,.85);backdrop-filter:blur(16px);
+  border:1px solid rgba(196,181,232,.2);
+  padding:14px 18px;display:flex;align-items:center;gap:12px;
+  min-width:220px;transition:opacity .3s;
+}
+#music-player:hover{opacity:1;}
+.music-vinyl{
+  width:36px;height:36px;border-radius:50%;
+  background:conic-gradient(#1e0a3c 0deg,#4b2e83 60deg,#1e0a3c 120deg,#7c5cbf 180deg,#1e0a3c 240deg,#4b2e83 300deg,#1e0a3c 360deg);
+  position:relative;flex-shrink:0;
+  animation:spin 3s linear infinite;animation-play-state:paused;
+}
+.music-vinyl.playing{animation-play-state:running;}
+.music-vinyl::after{content:'';position:absolute;inset:30%;border-radius:50%;background:#0d0820;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.music-info{flex:1;min-width:0;}
+.music-title{font-size:11px;font-weight:600;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.music-sub{font-size:9px;color:rgba(196,181,232,.6);letter-spacing:.08em;text-transform:uppercase;margin-top:2px;}
+.music-btn{
+  width:28px;height:28px;border-radius:50%;
+  background:var(--lavender);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s;flex-shrink:0;
+}
+.music-btn:hover{background:var(--white);}
+.music-btn svg{width:12px;height:12px;fill:var(--purple);}
+.music-bar{
+  position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:rgba(196,181,232,.15);
+}
+.music-progress{height:100%;background:var(--lavender);width:0%;transition:width .5s linear;}
+
+/* ── HERO RAIN SCENE ── */
+.hero-wrap{position:relative;height:300vh;}
+.hero-sticky{
+  position:sticky;top:0;height:100vh;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+}
+
+/* Rain canvas sits behind everything in the hero */
+#rain-canvas{
+  position:absolute;inset:0;z-index:0;
+}
+
+/* Deep dark purple gradient over rain */
+.hero-bg-gradient{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(13,8,32,.92) 0%,rgba(30,10,60,.85) 60%,rgba(13,8,32,.95) 100%);
+}
+
+/* 3D PCB container */
+.pcb-scene{
+  position:absolute;right:6%;top:50%;transform:translateY(-50%);
+  z-index:2;width:340px;height:340px;
+  perspective:800px;
+}
+.pcb-board{
+  width:100%;height:100%;
+  transform-style:preserve-3d;
+  animation:pcb-float 6s ease-in-out infinite, pcb-rotate 18s linear infinite;
+}
+@keyframes pcb-float{
+  0%,100%{transform:rotateX(18deg) rotateY(0deg) translateY(0px);}
+  50%{transform:rotateX(18deg) rotateY(0deg) translateY(-18px);}
+}
+@keyframes pcb-rotate{
+  from{transform:rotateX(18deg) rotateY(0deg);}
+  to{transform:rotateX(18deg) rotateY(360deg);}
+}
+
+/* Hero window (clips purple over rain scene) */
+.hero-window{
+  position:absolute;inset:0;z-index:3;
+  background:transparent;
+  clip-path:inset(0% 0% 0% 0% round 0px);
+}
+
+/* White reveal */
+.hero-reveal-bg{
+  position:absolute;inset:0;z-index:2;
+  background:var(--white);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .5s;
+}
+.hero-reveal-bg.show{opacity:1;}
+
+/* Rain ripples on white */
+#ripple-canvas{position:absolute;inset:0;opacity:.12;}
+
+.profile-card{
+  text-align:center;opacity:0;transform:translateY(30px);
+  transition:opacity .6s,transform .6s;position:relative;z-index:1;
+}
+.profile-card.visible{opacity:1;transform:translateY(0);}
+.profile-avatar{
+  width:200px;height:200px;border-radius:50%;
+  background:var(--lgray);border:3px solid var(--lavender);
+  margin:0 auto 22px;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 40px rgba(124,92,191,.25);
+}
+.profile-name-reveal{
+  font-family:'SF Pro Display',-apple-system,system-ui,sans-serif;
+  font-size:clamp(36px,5vw,68px);font-weight:700;
+  color:var(--purple);letter-spacing:-.03em;line-height:1;
+}
+.profile-sub-reveal{
+  font-size:13px;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--violet);margin-top:10px;
+}
+
+/* Hero text */
+.hero-text-layer{
+  position:relative;z-index:4;text-align:center;
+  padding:80px 40px 0;pointer-events:none;
+}
+.hero-eyebrow{
+  font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--lavender);margin-bottom:28px;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:32px;height:1px;background:var(--lavender);opacity:.5;}
+.hero-headline{
+  font-family:'SF Pro Display',-apple-system,system-ui,sans-serif;
+  font-size:clamp(38px,6vw,80px);font-weight:500;
+  color:var(--white);letter-spacing:-.03em;line-height:.97;
+}
+.hero-headline em{font-style:normal;color:var(--lavender);}
+.hero-desc{
+  margin-top:28px;font-size:15px;line-height:1.75;
+  color:rgba(255,255,255,.55);max-width:520px;margin-left:auto;margin-right:auto;
+}
+.hero-scroll-hint{
+  position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+  z-index:10;display:flex;flex-direction:column;align-items:center;gap:8px;
+  font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(255,255,255,.35);pointer-events:none;transition:opacity .5s;
+}
+.scroll-arrow{
+  width:20px;height:20px;
+  border-right:1.5px solid rgba(255,255,255,.3);
+  border-bottom:1.5px solid rgba(255,255,255,.3);
+  transform:rotate(45deg);
+  animation:bounce 1.8s ease-in-out infinite;margin-top:-4px;
+}
+@keyframes bounce{0%,100%{transform:rotate(45deg) translateY(0);}50%{transform:rotate(45deg) translateY(5px);}}
+
+/* ── SECTIONS ── */
+.section{padding:110px 52px;position:relative;}
+.section-dark{background:var(--purple);color:var(--white);}
+.section-off{background:var(--off);}
+.section-white{background:var(--white);}
+.section-label{font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--violet);margin-bottom:12px;}
+.section-dark .section-label{color:var(--lavender);}
+.section-title{
+  font-family:'SF Pro Display',-apple-system,system-ui,sans-serif;
+  font-size:clamp(32px,4vw,58px);font-weight:600;letter-spacing:-.03em;
+  line-height:1.05;color:var(--purple);max-width:700px;
+}
+.section-dark .section-title{color:var(--white);}
+
+/* ── ABOUT ── */
+.about-split{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-top:56px;}
+.about-text{font-size:16px;line-height:1.85;color:#444;}
+.about-text p+p{margin-top:18px;}
+.about-text strong{color:var(--purple);font-weight:600;}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);}
+.stat-box{background:var(--white);padding:32px 28px;transition:background .25s;}
+.stat-box:hover{background:var(--off);}
+.stat-num{font-family:'SF Pro Display',-apple-system,system-ui,sans-serif;font-size:42px;font-weight:700;color:var(--purple);letter-spacing:-.04em;line-height:1;}
+.stat-label{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-top:6px;}
+.courses-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px;}
+.course-pill{font-size:11px;font-weight:500;letter-spacing:.06em;padding:7px 15px;border:1px solid var(--border);color:var(--gray);background:var(--off);transition:all .2s;}
+.course-pill:hover{border-color:var(--grape);color:var(--purple);background:var(--white);}
+
+/* ── EXPERIENCE ── */
+.exp-track-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;cursor:grab;user-select:none;margin-top:52px;}
+.exp-track-wrap:active{cursor:grabbing;}
+.exp-track-wrap::-webkit-scrollbar{display:none;}
+.exp-track{display:flex;gap:2px;width:max-content;padding-bottom:4px;}
+.exp-card{
+  width:380px;flex-shrink:0;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  padding:36px 32px;transition:border-color .3s,background .3s;position:relative;overflow:hidden;
+}
+.exp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--lavender),var(--violet));transform:scaleX(0);transform-origin:left;transition:transform .35s;}
+.exp-card:hover{border-color:rgba(255,255,255,.2);background:rgba(255,255,255,.09);}
+.exp-card:hover::before{transform:scaleX(1);}
+.exp-period{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--lavender);margin-bottom:16px;}
+.exp-title{font-family:'SF Pro Display',-apple-system,system-ui,sans-serif;font-size:20px;font-weight:600;color:var(--white);letter-spacing:-.02em;margin-bottom:6px;line-height:1.15;}
+.exp-org{font-size:12px;font-weight:500;color:var(--lavender);margin-bottom:20px;opacity:.8;}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.exp-bullets li{font-size:13.5px;line-height:1.65;color:rgba(255,255,255,.55);padding-left:14px;position:relative;}
+.exp-bullets li::before{content:'—';position:absolute;left:0;color:var(--lavender);font-size:10px;top:5px;}
+.exp-drag-hint{font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:20px;display:flex;align-items:center;gap:8px;}
+.exp-drag-hint::before{content:'←';}
+.exp-drag-hint::after{content:'→';}
+
+/* ── SKILLS ── */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin-top:52px;}
+.skill-item{background:var(--white);padding:24px 28px;transition:background .22s;}
+.skill-item:hover{background:var(--off);}
+.skill-cat{font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--violet);margin-bottom:8px;}
+.skill-name{font-size:15px;font-weight:600;color:var(--purple);}
+
+/* ── PROJECTS ── */
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin-top:52px;}
+.project-card{background:var(--white);overflow:hidden;transition:background .25s;}
+.project-card:hover{background:var(--off);}
+.project-img{width:100%;aspect-ratio:16/9;overflow:hidden;background:var(--lgray);}
+.project-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+.project-card:hover .project-img img{transform:scale(1.05);}
+.project-placeholder{width:100%;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--lgray);position:relative;overflow:hidden;}
+.project-placeholder::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(75,46,131,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(75,46,131,.07) 1px,transparent 1px);background-size:32px 32px;}
+.ph-icon{width:40px;height:40px;opacity:.2;position:relative;z-index:1;}
+.ph-txt{font-size:9px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray);position:relative;z-index:1;}
+.project-body{padding:28px 28px 20px;}
+.project-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;}
+.project-tag{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;background:var(--lgray);color:var(--grape);}
+.project-title{font-family:'SF Pro Display',-apple-system,system-ui,sans-serif;font-size:20px;font-weight:600;color:var(--purple);letter-spacing:-.02em;margin-bottom:10px;}
+.project-desc{font-size:13.5px;line-height:1.7;color:var(--gray);}
+.project-footer{padding:14px 28px 20px;display:flex;gap:16px;border-top:1px solid var(--border);margin-top:16px;}
+.project-link{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--purple);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:1px;transition:opacity .2s;}
+.project-link:hover{opacity:.5;}
+
+/* ── CONTACT ── */
+.contact-inner{max-width:640px;margin:0 auto;text-align:center;}
+.contact-email{font-family:'SF Pro Display',-apple-system,system-ui,sans-serif;font-size:clamp(28px,4vw,52px);font-weight:600;color:var(--white);letter-spacing:-.03em;text-decoration:none;display:block;margin:48px 0 40px;transition:color .25s;}
+.contact-email:hover{color:var(--lavender);}
+.contact-links{display:flex;justify-content:center;gap:32px;flex-wrap:wrap;}
+.contact-link{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);text-decoration:none;transition:color .25s;}
+.contact-link:hover{color:var(--white);}
+
+/* ── FOOTER ── */
+footer{background:var(--black);padding:28px 52px;display:flex;justify-content:space-between;align-items:center;}
+.footer-txt{font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3);}
+
+/* ── DIVIDER ── */
+.divider{height:1px;background:var(--border);}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .75s ease,transform .75s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:860px){
+  nav{padding:16px 24px;}
+  .nav-links{display:none;}
+  .section{padding:72px 24px;}
+  .about-split{grid-template-columns:1fr;gap:48px;}
+  .pcb-scene{display:none;}
+  footer{padding:20px 24px;flex-direction:column;gap:8px;}
+  #music-player{bottom:16px;right:16px;min-width:180px;}
 }
 </style>
 </head>
@@ -840,38 +329,130 @@ footer {
   <a href="mailto:jonas.himawan@yahoo.com" class="nav-cta">Let's talk</a>
 </nav>
 
-<!-- ════════════════════════════════════════════
-     HERO — SCROLL-OPENING GRAPHIC
-     As you scroll, the dark purple panel shrinks
-     inward (like iris closing in reverse) to
-     reveal the white "profile card" beneath.
-     ════════════════════════════════════════════ -->
+<!-- JAZZ MUSIC PLAYER -->
+<div id="music-player">
+  <div class="music-vinyl" id="vinyl"></div>
+  <div class="music-info">
+    <div class="music-title" id="music-title">Autumn Leaves</div>
+    <div class="music-sub">Jazz · Now Playing</div>
+  </div>
+  <button class="music-btn" id="music-btn" aria-label="Play/pause music">
+    <svg id="play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+  </button>
+  <div class="music-bar"><div class="music-progress" id="music-progress"></div></div>
+</div>
+<!-- Hidden audio — free CC jazz tracks from Free Music Archive -->
+<audio id="jazz-audio" loop>
+  <source src="https://freemusicarchive.org/track/autumn-leaves/stream/" type="audio/mpeg">
+  <!-- Fallback: royalty-free jazz via a reliable CC0 source -->
+</audio>
+
+<!-- HERO -->
 <div class="hero-wrap" id="hero-wrap">
   <div class="hero-sticky" id="hero-sticky">
 
-    <!-- White layer underneath (revealed as purple shrinks) -->
-  <div class="hero-reveal-bg">
-    <div class="profile-card" id="profile-card">
-      <div class="profile-avatar" id="profile-avatar-el">
-        <img src="IMG_5710.jpeg" alt="Jonas Himawan" style="width:100%;height:100%;object-fit:cover;border-radius:50%">
-      </div>
-      <div class="profile-name-reveal">Jonas Himawan</div>
-      <div class="profile-sub-reveal">Electrical &amp; Computer Engineering · UW Seattle</div>
-    </div>
-  </div>
+    <!-- Rain canvas -->
+    <canvas id="rain-canvas"></canvas>
 
-    <!-- Purple overlay that clips away on scroll -->
+    <!-- Gradient overlay -->
+    <div class="hero-bg-gradient"></div>
+
+    <!-- 3D PCB graphic (CSS 3D) -->
+    <div class="pcb-scene">
+      <div class="pcb-board">
+        <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;filter:drop-shadow(0 0 24px rgba(124,92,191,0.6))">
+          <!-- Board -->
+          <rect x="10" y="10" width="280" height="280" rx="12" fill="#0d1f0d" stroke="#1a3a1a" stroke-width="2"/>
+          <!-- Copper traces -->
+          <g stroke="#b87333" stroke-width="1.5" fill="none" opacity="0.8">
+            <line x1="50" y1="50" x2="250" y2="50"/>
+            <line x1="50" y1="50" x2="50" y2="250"/>
+            <line x1="250" y1="50" x2="250" y2="250"/>
+            <line x1="50" y1="250" x2="250" y2="250"/>
+            <line x1="150" y1="50" x2="150" y2="130"/>
+            <line x1="150" y1="170" x2="150" y2="250"/>
+            <line x1="50" y1="150" x2="130" y2="150"/>
+            <line x1="170" y1="150" x2="250" y2="150"/>
+            <line x1="80" y1="80" x2="120" y2="80"/>
+            <line x1="180" y1="80" x2="220" y2="80"/>
+            <line x1="80" y1="220" x2="120" y2="220"/>
+            <line x1="180" y1="220" x2="220" y2="220"/>
+            <line x1="80" y1="80" x2="80" y2="120"/>
+            <line x1="220" y1="80" x2="220" y2="120"/>
+            <line x1="80" y1="180" x2="80" y2="220"/>
+            <line x1="220" y1="180" x2="220" y2="220"/>
+          </g>
+          <!-- Solder mask layer (green tint overlay) -->
+          <rect x="10" y="10" width="280" height="280" rx="12" fill="rgba(0,80,0,0.15)"/>
+          <!-- Center IC chip -->
+          <rect x="120" y="120" width="60" height="60" rx="4" fill="#1a1a2e" stroke="#7c5cbf" stroke-width="1.5"/>
+          <rect x="128" y="128" width="44" height="44" rx="2" fill="#0d0820" stroke="#4b2e83" stroke-width="1"/>
+          <!-- IC pins -->
+          <g stroke="#c4b5e8" stroke-width="1.2" opacity="0.9">
+            <line x1="120" y1="132" x2="110" y2="132"/><line x1="120" y1="140" x2="110" y2="140"/>
+            <line x1="120" y1="148" x2="110" y2="148"/><line x1="120" y1="156" x2="110" y2="156"/>
+            <line x1="120" y1="164" x2="110" y2="164"/>
+            <line x1="180" y1="132" x2="190" y2="132"/><line x1="180" y1="140" x2="190" y2="140"/>
+            <line x1="180" y1="148" x2="190" y2="148"/><line x1="180" y1="156" x2="190" y2="156"/>
+            <line x1="180" y1="164" x2="190" y2="164"/>
+            <line x1="132" y1="120" x2="132" y2="110"/><line x1="140" y1="120" x2="140" y2="110"/>
+            <line x1="148" y1="120" x2="148" y2="110"/><line x1="156" y1="120" x2="156" y2="110"/>
+            <line x1="164" y1="120" x2="164" y2="110"/>
+            <line x1="132" y1="180" x2="132" y2="190"/><line x1="140" y1="180" x2="140" y2="190"/>
+            <line x1="148" y1="180" x2="148" y2="190"/><line x1="156" y1="180" x2="156" y2="190"/>
+            <line x1="164" y1="180" x2="164" y2="190"/>
+          </g>
+          <!-- Capacitors -->
+          <g fill="#c4b5e8" opacity="0.9">
+            <ellipse cx="80" cy="80" rx="8" ry="10"/><ellipse cx="220" cy="80" rx="8" ry="10"/>
+            <ellipse cx="80" cy="220" rx="8" ry="10"/><ellipse cx="220" cy="220" rx="8" ry="10"/>
+          </g>
+          <!-- Resistors -->
+          <g fill="#b87333" opacity="0.9">
+            <rect x="95" y="76" width="20" height="8" rx="2"/><rect x="185" y="76" width="20" height="8" rx="2"/>
+            <rect x="95" y="216" width="20" height="8" rx="2"/><rect x="185" y="216" width="20" height="8" rx="2"/>
+          </g>
+          <!-- Glowing signal dots -->
+          <g>
+            <circle cx="150" cy="50" r="4" fill="#7c5cbf"><animate attributeName="opacity" values="1;0.2;1" dur="1.5s" repeatCount="indefinite"/></circle>
+            <circle cx="50" cy="150" r="4" fill="#c4b5e8"><animate attributeName="opacity" values="0.2;1;0.2" dur="2s" repeatCount="indefinite"/></circle>
+            <circle cx="250" cy="150" r="4" fill="#7c5cbf"><animate attributeName="opacity" values="1;0.3;1" dur="1.8s" repeatCount="indefinite"/></circle>
+            <circle cx="150" cy="250" r="4" fill="#c4b5e8"><animate attributeName="opacity" values="0.3;1;0.3" dur="2.2s" repeatCount="indefinite"/></circle>
+            <circle cx="150" cy="150" r="5" fill="#9b90e8"><animate attributeName="r" values="3;6;3" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite"/></circle>
+          </g>
+          <!-- Corner mounting holes -->
+          <circle cx="30" cy="30" r="6" fill="none" stroke="#4b2e83" stroke-width="1.5"/>
+          <circle cx="270" cy="30" r="6" fill="none" stroke="#4b2e83" stroke-width="1.5"/>
+          <circle cx="30" cy="270" r="6" fill="none" stroke="#4b2e83" stroke-width="1.5"/>
+          <circle cx="270" cy="270" r="6" fill="none" stroke="#4b2e83" stroke-width="1.5"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Purple clip window -->
     <div class="hero-window" id="hero-window">
-      <!-- Headline text on purple -->
-      <div class="hero-text-layer" id="hero-text-layer">
-        <div class="hero-eyebrow">University of Washington · ECE · Class of 2028</div>
-        <h1 class="hero-headline">
-          Hi I'm<br>
-            <em>Jonas</em><br>
-          Himawan.
-        </h1>
-        
-        <p class="hero-desc">I'm from Essex Fells, New Jersey and decided to go to college 2,836 miles away to start a new chapter. At UW I found a passion for embedded systems. I grew up as the LEGO kid, and embedded systems basically brings that to life through software and hardware. I'm also exploring Verilog, robotics, and computer architecture. Outside of engineering, I love cooking, especially Neapolitan pizza, playing basketball, and I'm definitely one of the biggest UW basketball and football fans you'll meet. Hope you enjoy my portfolio - Jonas</p>
+      <!-- Hero text lives INSIDE the window so it fades with it -->
+      <div style="position:absolute;inset:0;background:transparent;display:flex;align-items:center;justify-content:center;">
+        <div class="hero-text-layer" id="hero-text-layer">
+          <div class="hero-eyebrow">UW Seattle · ECE · Class of 2028</div>
+          <h1 class="hero-headline">
+            Hi, I'm<br>
+            <em>Jonas.</em>
+          </h1>
+          <p class="hero-desc">I'm from Essex Fells, New Jersey and decided to go to college 2,836 miles away to start a new chapter. At UW I found a passion for embedded systems. I grew up as the LEGO kid, and embedded systems basically brings that to life through software and hardware. I'm also exploring Verilog, robotics, and computer architecture. Outside of engineering, I love cooking, especially Neapolitan pizza, playing basketball, and I'm definitely one of the biggest UW basketball and football fans you'll meet. Hope you enjoy my portfolio - Jonas</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- White reveal with ripple canvas -->
+    <div class="hero-reveal-bg" id="hero-reveal-bg">
+      <canvas id="ripple-canvas"></canvas>
+      <div class="profile-card" id="profile-card">
+        <div class="profile-avatar">
+          <img src="IMG_5710.jpeg" alt="Jonas Himawan" style="width:100%;height:100%;object-fit:cover;border-radius:50%">
+        </div>
+        <div class="profile-name-reveal">Jonas Himawan</div>
+        <div class="profile-sub-reveal">Electrical &amp; Computer Engineering · UW Seattle</div>
       </div>
     </div>
 
@@ -880,27 +461,19 @@ footer {
       Scroll to explore
       <div class="scroll-arrow"></div>
     </div>
+
   </div>
 </div>
 
-
-<!-- ─── ABOUT ─── -->
+<!-- ABOUT -->
 <section class="section section-white" id="about">
   <div class="section-label">About</div>
   <h2 class="section-title">Incoming 3rd year ECE student. Researcher. Builder.</h2>
-
   <div class="about-split reveal">
     <div class="about-text">
-      <p>
-        I'm an <strong>incoming 3rd year Electrical &amp; Computer Engineering</strong> Dean's List student at the University of Washington Seattle with a 3.84 ECE GPA. I thrive at the intersection of hardware and software through writing firmware, designing PCBs, and running acoustic experiments.
-      </p>
-      <p>
-        At the <strong>Networking &amp; Emerging Wireless Technologies Lab</strong>, I contribute to ultrasonic acoustic research and underwater acoustics. I've conducted field deployments for underwater acoustics that fed into an ACM SenSys 2026 accepted paper with a 2.2° average lake deployment error. I'm also a Hardware/Firmware Developer at the Fitness Tech Engineering Student Organization at UW, building ESP32-based embedded systems with custom PCBs.
-      </p>
-      <p>
-        I also serve as a <strong>Resident Adviser</strong> supporting a 900+ student residential community, directly advising 60 residents. 
-      </p>
-
+      <p>I'm an <strong>incoming 3rd year Electrical &amp; Computer Engineering</strong> student at the University of Washington Seattle with a 3.84 GPA and a spot on the Dean's List. I work at the intersection of hardware and software — writing firmware, designing PCBs, and running acoustic experiments.</p>
+      <p>At the <strong>NEWT Lab</strong>, I contribute to ultrasonic acoustic research — including field deployments that fed into an ACM SenSys 2026 accepted paper with a 2.2° average lake deployment error. I'm also a Hardware/Firmware Developer at Fitness Tech at UW, building ESP32-based embedded systems with custom PCBs.</p>
+      <p>Outside of engineering, I serve as a <strong>Resident Adviser</strong> supporting a 900+ student residential community, and I love tackling problems where theory meets the real world.</p>
       <div class="courses-row">
         <span class="course-pill">Signals &amp; Systems</span>
         <span class="course-pill">Electronic &amp; Photonic Devices</span>
@@ -910,21 +483,11 @@ footer {
         <span class="course-pill">Data Structures &amp; Algorithms</span>
       </div>
     </div>
-
     <div>
       <div class="stats-grid">
-        <div class="stat-box">
-          <div class="stat-num">3.84</div>
-          <div class="stat-label">ECE GPA · Dean's List</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-num">Incoming 3rd</div>
-          <div class="stat-label">Year at UW</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-num">'26</div>
-          <div class="stat-label">ACM SenSys Paper · Data Collection</div>
-        </div>
+        <div class="stat-box"><div class="stat-num">3.84</div><div class="stat-label">GPA · Dean's List</div></div>
+        <div class="stat-box"><div class="stat-num">3rd</div><div class="stat-label">Year at UW</div></div>
+        <div class="stat-box" style="grid-column:1/-1"><div class="stat-num">'26</div><div class="stat-label">ACM SenSys Paper · Data Collection</div></div>
       </div>
     </div>
   </div>
@@ -932,18 +495,13 @@ footer {
 
 <div class="divider"></div>
 
-<!-- ─── EXPERIENCE ─── -->
+<!-- EXPERIENCE -->
 <section class="section section-dark" id="experience">
   <div class="section-label">Experience</div>
   <h2 class="section-title">Where I've worked</h2>
-
-  <div style="display:flex;justify-content:center">
-    <div class="exp-drag-hint">Drag to scroll</div>
-  </div>
-
+  <div style="display:flex;justify-content:center"><div class="exp-drag-hint">Drag to scroll</div></div>
   <div class="exp-track-wrap reveal" id="exp-track-wrap">
     <div class="exp-track" id="exp-track">
-
       <div class="exp-card">
         <div class="exp-period">March 2026 – Present</div>
         <div class="exp-title">Hardware / Firmware Developer</div>
@@ -952,7 +510,6 @@ footer {
           <li>Developing embedded hardware &amp; firmware for fitness technology prototypes with sensors, ESP32 microcontrollers, Bluetooth connectivity, mobile app integration, and custom PCB design.</li>
         </ul>
       </div>
-
       <div class="exp-card">
         <div class="exp-period">Sep. 2025 – Present</div>
         <div class="exp-title">Undergraduate Research Assistant</div>
@@ -962,7 +519,6 @@ footer {
           <li>Deployed field transmitter/receiver systems for underwater acoustics; data contributed to an ACM SenSys 2026 accepted paper with 2.2° average lake deployment error.</li>
         </ul>
       </div>
-
       <div class="exp-card">
         <div class="exp-period">Sep. 2025 – Present</div>
         <div class="exp-title">Resident Adviser</div>
@@ -971,18 +527,15 @@ footer {
           <li>Supporting safety and well-being for a 900+ student residential community through on-call response, policy enforcement, conflict mediation, and advising 65 residents.</li>
         </ul>
       </div>
-
-      <!-- spacer card -->
       <div style="width:80px;flex-shrink:0;"></div>
     </div>
   </div>
 </section>
 
-<!-- ─── SKILLS ─── -->
+<!-- SKILLS -->
 <section class="section section-white" id="skills">
   <div class="section-label">Skills</div>
   <h2 class="section-title">What I work with</h2>
-
   <div class="skills-grid reveal">
     <div class="skill-item"><div class="skill-cat">Languages</div><div class="skill-name">C / C++</div></div>
     <div class="skill-item"><div class="skill-cat">Languages</div><div class="skill-name">Python</div></div>
@@ -1001,96 +554,58 @@ footer {
 
 <div class="divider"></div>
 
-<!-- ─── PROJECTS ─── -->
+<!-- PROJECTS -->
 <section class="section section-off" id="projects">
   <div class="section-label">Projects</div>
   <h2 class="section-title">Things I've built</h2>
-
   <div class="projects-grid reveal">
 
-    <!-- PROJECT 1: SipSync ─────────────────────────
-         📸 Add image: replace <div class="project-placeholder"> block with:
-         <div class="project-img"><img src="sipsync.jpg" alt="SipSync"></div>
-    ─────────────────────────────────────────────── -->
     <div class="project-card">
+      <!-- 📸 Replace placeholder with: <div class="project-img"><img src="sipsync.jpg" alt="SipSync"></div> -->
       <div class="project-placeholder">
         <svg class="ph-icon" viewBox="0 0 48 48" fill="none"><rect x="16" y="4" width="16" height="40" rx="5" stroke="#4b2e83" stroke-width="1.5"/><rect x="20" y="14" width="8" height="4" stroke="#4b2e83" stroke-width="1"/><line x1="24" y1="30" x2="24" y2="36" stroke="#4b2e83" stroke-width="1.5"/></svg>
         <span class="ph-txt">Add project image</span>
       </div>
       <div class="project-body">
-        <div class="project-tags">
-          <span class="project-tag">C/C++</span>
-          <span class="project-tag">ESP32</span>
-          <span class="project-tag">KiCad</span>
-          <span class="project-tag">Bluetooth</span>
-        </div>
+        <div class="project-tags"><span class="project-tag">C/C++</span><span class="project-tag">ESP32</span><span class="project-tag">KiCad</span><span class="project-tag">Bluetooth</span></div>
         <div class="project-title">SipSync</div>
         <div class="project-desc">Proof-of-concept smart water bottle tracking hydration and syncing sip data with the MyFitnessTech mobile app. Integrated XIAO ESP32, load cell, accelerometer, LED strip, LiPo battery, boost converter, and Bluetooth. Designed a custom KiCad PCB to move from breadboard to compact hardware.</div>
       </div>
-      <div class="project-footer">
-        <a href="#" class="project-link">GitHub ↗</a>
-        <a href="#" class="project-link">Demo ↗</a>
-      </div>
+      <div class="project-footer"><a href="#" class="project-link">GitHub ↗</a><a href="#" class="project-link">Demo ↗</a></div>
     </div>
 
-    <!-- PROJECT 2: Ultrasonic DFG ──────────────────
-         📸 Add image: replace <div class="project-placeholder"> block with:
-         <div class="project-img"><img src="dfg-setup.jpg" alt="Ultrasonic DFG"></div>
-    ─────────────────────────────────────────────── -->
     <div class="project-card">
+      <!-- 📸 Replace placeholder with: <div class="project-img"><img src="dfg.jpg" alt="Ultrasonic DFG"></div> -->
       <div class="project-placeholder">
         <svg class="ph-icon" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="16" stroke="#4b2e83" stroke-width="1.5"/><path d="M14 24c0-5.5 4.5-10 10-10" stroke="#4b2e83" stroke-width="1" stroke-linecap="round"/><path d="M10 24c0-7.7 6.3-14 14-14" stroke="#4b2e83" stroke-width="1" stroke-linecap="round" opacity=".5"/><circle cx="24" cy="24" r="3" fill="#4b2e83" opacity=".4"/></svg>
         <span class="ph-txt">Add project image</span>
       </div>
       <div class="project-body">
-        <div class="project-tags">
-          <span class="project-tag">C/C++</span>
-          <span class="project-tag">Python</span>
-          <span class="project-tag">Arduino</span>
-          <span class="project-tag">Signal Processing</span>
-        </div>
+        <div class="project-tags"><span class="project-tag">C/C++</span><span class="project-tag">Python</span><span class="project-tag">Arduino</span><span class="project-tag">Signal Processing</span></div>
         <div class="project-title">Ultrasonic Difference-Frequency Generation</div>
         <div class="project-desc">Signal generation setup with 20 kHz and 23 kHz ultrasonic speakers to evaluate DFG at the NEWT Lab. Sped up data collection by 400% with a Fusion 360 stepper motor positioning system. Improved 3 kHz peak detection by 25% using Python FFT/spectrogram analysis.</div>
       </div>
-      <div class="project-footer">
-        <a href="#" class="project-link">GitHub ↗</a>
-        <a href="#" class="project-link">Paper ↗</a>
-      </div>
+      <div class="project-footer"><a href="#" class="project-link">GitHub ↗</a><a href="#" class="project-link">Paper ↗</a></div>
     </div>
 
-    <!-- PROJECT 3: Line Robot ──────────────────────
-         📸 Add image: replace <div class="project-placeholder"> block with:
-         <div class="project-img"><img src="robot.jpg" alt="Line-following robot"></div>
-    ─────────────────────────────────────────────── -->
-    
     <div class="project-card">
+      <!-- 📸 Replace placeholder with: <div class="project-img"><img src="robot.jpg" alt="Line Robot"></div> -->
       <div class="project-placeholder">
         <svg class="ph-icon" viewBox="0 0 48 48" fill="none"><rect x="10" y="16" width="28" height="16" rx="3" stroke="#4b2e83" stroke-width="1.5"/><circle cx="15" cy="36" r="5" stroke="#4b2e83" stroke-width="1.5"/><circle cx="33" cy="36" r="5" stroke="#4b2e83" stroke-width="1.5"/></svg>
         <span class="ph-txt">Add project image</span>
       </div>
       <div class="project-body">
-        <div class="project-tags">
-          <span class="project-tag">KiCad</span>
-          <span class="project-tag">Arduino</span>
-          <span class="project-tag">C/C++</span>
-          <span class="project-tag">Fusion 360</span>
-        </div>
+        <div class="project-tags"><span class="project-tag">KiCad</span><span class="project-tag">Arduino</span><span class="project-tag">C/C++</span><span class="project-tag">Fusion 360</span></div>
         <div class="project-title">Autonomous Line-Following Robot</div>
-        <div class="project-desc">Custom Fusion 360 chassis and KiCad photoresistor sensor array PCB for a line-following robot. Wrote Arduino Mega firmware for sensor calibration, real-time photoresistor processing, and PID motor control — achieving the 6th-fastest course time.</div>
+        <div class="project-desc">Custom Fusion 360 chassis and KiCad photoresistor sensor array PCB. Wrote Arduino Mega firmware for sensor calibration, real-time photoresistor processing, and PID motor control — achieving the 6th-fastest course time.</div>
       </div>
-      <div class="project-footer">
-        <a href="#" class="project-link">GitHub ↗</a>
-        <a href="#" class="project-link">Demo ↗</a>
-      </div>
+      <div class="project-footer"><a href="#" class="project-link">GitHub ↗</a><a href="#" class="project-link">Demo ↗</a></div>
     </div>
 
-    <!--
-      ➕ ADD MORE PROJECTS: Copy any card above, paste here, update the content.
-    -->
   </div>
 </section>
 
-<!-- ─── CONTACT ─── -->
+<!-- CONTACT -->
 <section class="section section-dark" id="contact">
   <div class="contact-inner reveal">
     <div class="section-label" style="color:var(--lavender);">Contact</div>
@@ -1103,109 +618,237 @@ footer {
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <span class="footer-txt">© 2026 Jonas Himawan</span>
   <span class="footer-txt">ECE · University of Washington Seattle</span>
 </footer>
 
 <script>
-/* ── NAV scroll class ── */
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 60);
-}, { passive: true });
+/* ══════════════════════════════════════
+   RAIN CANVAS
+══════════════════════════════════════ */
+(function(){
+  const canvas = document.getElementById('rain-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, drops = [];
 
-/* ── HERO SCROLL-OPEN ──
-   As the user scrolls through the hero-wrap (300vh tall),
-   the purple window clips inward (iris-close from edges),
-   revealing the white profile card beneath.
-   Phase 1 (0%–55%): purple clips inward → small window
-   Phase 2 (55%–100%): purple fully gone, profile card fades in
-── */
-const heroWrap   = document.getElementById('hero-wrap');
-const heroWindow = document.getElementById('hero-window');
-const heroText   = document.getElementById('hero-text-layer');
-const profileCard = document.getElementById('profile-card');
-const scrollHint  = document.getElementById('scroll-hint');
+  function resize(){
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', () => { resize(); initDrops(); });
 
-function lerp(a, b, t) { return a + (b - a) * Math.min(1, Math.max(0, t)); }
+  function initDrops(){
+    drops = [];
+    const count = Math.floor(W / 4);
+    for(let i = 0; i < count; i++){
+      drops.push({
+        x: Math.random() * W,
+        y: Math.random() * H - H,
+        len: Math.random() * 20 + 10,
+        speed: Math.random() * 8 + 6,
+        opacity: Math.random() * 0.25 + 0.05,
+        width: Math.random() * 0.8 + 0.2
+      });
+    }
+  }
+  initDrops();
 
-function updateHero() {
-  const wrapRect = heroWrap.getBoundingClientRect();
-  const totalScroll = heroWrap.offsetHeight - window.innerHeight;
-  const scrolled = -wrapRect.top;
-  const progress = Math.min(1, Math.max(0, scrolled / totalScroll));
+  function drawRain(){
+    ctx.clearRect(0, 0, W, H);
+    drops.forEach(d => {
+      ctx.beginPath();
+      ctx.moveTo(d.x, d.y);
+      ctx.lineTo(d.x - d.len * 0.15, d.y + d.len);
+      ctx.strokeStyle = `rgba(196,181,232,${d.opacity})`;
+      ctx.lineWidth = d.width;
+      ctx.stroke();
+      d.y += d.speed;
+      if(d.y > H + d.len){
+        d.y = -d.len;
+        d.x = Math.random() * W;
+      }
+    });
+    requestAnimationFrame(drawRain);
+  }
+  drawRain();
+})();
 
-  /* Phase 1: 0 → 0.6 — clip the purple panel inward */
-  const phase1 = Math.min(1, progress / 0.6);
-  /* Clip goes from 0% → 35% on each side */
-  const clipPct = lerp(0, 35, easeInOut(phase1));
+/* ══════════════════════════════════════
+   RIPPLE CANVAS (white reveal phase)
+══════════════════════════════════════ */
+(function(){
+  const canvas = document.getElementById('ripple-canvas');
+  const ctx = canvas.getContext('2d');
+  let W, H, ripples = [];
 
-  heroWindow.style.clipPath = `inset(${clipPct}% ${clipPct * 1.6}% ${clipPct}% ${clipPct * 1.6}% round ${lerp(0, 24, phase1)}px)`;
+  function resize(){
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+  resize();
 
-  /* Fade hero text out in phase 1 */
-  heroText.style.opacity = Math.max(0, 1 - phase1 * 2.5);
-
-  /* Fade scroll hint out quickly */
-  scrollHint.style.opacity = Math.max(0, 1 - progress * 6);
-
-  /* Phase 2: 0.55 → 0.85 — show profile card */
-  const phase2 = Math.min(1, Math.max(0, (progress - 0.55) / 0.3));
-  if (phase2 > 0) {
-    profileCard.classList.add('visible');
-  } else {
-    profileCard.classList.remove('visible');
+  function spawnRipple(){
+    ripples.push({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: 0,
+      maxR: Math.random() * 40 + 15,
+      opacity: 0.4,
+      speed: Math.random() * 0.8 + 0.4
+    });
   }
 
-  /* Phase 2.5: 0.7 → 1.0 — re-expand the window outward (like opening) */
-  const phase3 = Math.min(1, Math.max(0, (progress - 0.7) / 0.3));
-  if (phase3 > 0) {
-    const expandClip = lerp(35, 0, easeInOut(phase3));
-    heroWindow.style.clipPath = `inset(${expandClip}% ${expandClip * 1.6}% ${expandClip}% ${expandClip * 1.6}% round ${lerp(24, 0, phase3)}px)`;
-    /* Fade out the purple window entirely in the last part */
-    heroWindow.style.opacity = Math.max(0, 1 - phase3 * 3);
+  setInterval(spawnRipple, 300);
+
+  function drawRipples(){
+    ctx.clearRect(0, 0, W, H);
+    ripples = ripples.filter(r => r.opacity > 0.01);
+    ripples.forEach(r => {
+      ctx.beginPath();
+      ctx.arc(r.x, r.y, r.r, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(75,46,131,${r.opacity})`;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      r.r += r.speed;
+      r.opacity *= 0.96;
+    });
+    requestAnimationFrame(drawRipples);
+  }
+  drawRipples();
+})();
+
+/* ══════════════════════════════════════
+   HERO SCROLL ANIMATION
+══════════════════════════════════════ */
+const heroWrap    = document.getElementById('hero-wrap');
+const heroWindow  = document.getElementById('hero-window');
+const heroText    = document.getElementById('hero-text-layer');
+const profileCard = document.getElementById('profile-card');
+const revealBg    = document.getElementById('hero-reveal-bg');
+const scrollHint  = document.getElementById('scroll-hint');
+
+function lerp(a,b,t){ return a + (b-a) * Math.min(1, Math.max(0, t)); }
+function ease(t){ return t<0.5 ? 2*t*t : -1+(4-2*t)*t; }
+
+function updateHero(){
+  const rect = heroWrap.getBoundingClientRect();
+  const total = heroWrap.offsetHeight - window.innerHeight;
+  const prog = Math.min(1, Math.max(0, -rect.top / total));
+
+  // Phase 1 (0→0.55): clip purple inward, fade text
+  const p1 = Math.min(1, prog / 0.55);
+  const clip = lerp(0, 38, ease(p1));
+  heroWindow.style.clipPath = `inset(${clip}% ${clip*1.5}% ${clip}% ${clip*1.5}% round ${lerp(0,28,p1)}px)`;
+  heroText.style.opacity = Math.max(0, 1 - p1 * 2.2);
+  scrollHint.style.opacity = Math.max(0, 1 - prog * 8);
+
+  // Phase 2 (0.5→0.75): show white + profile
+  const p2 = Math.min(1, Math.max(0, (prog - 0.5) / 0.25));
+  revealBg.style.opacity = ease(p2);
+  if(p2 > 0.1) profileCard.classList.add('visible');
+  else profileCard.classList.remove('visible');
+
+  // Phase 3 (0.72→1.0): re-expand purple outward then vanish
+  const p3 = Math.min(1, Math.max(0, (prog - 0.72) / 0.28));
+  if(p3 > 0){
+    const expand = lerp(38, 0, ease(p3));
+    heroWindow.style.clipPath = `inset(${expand}% ${expand*1.5}% ${expand}% ${expand*1.5}% round ${lerp(28,0,p3)}px)`;
+    heroWindow.style.opacity = Math.max(0, 1 - p3 * 4);
   } else {
     heroWindow.style.opacity = 1;
   }
 }
 
-function easeInOut(t) {
-  return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-}
-
-window.addEventListener('scroll', updateHero, { passive: true });
+window.addEventListener('scroll', updateHero, { passive:true });
 updateHero();
 
-/* ── SCROLL REVEAL ── */
+/* ══════════════════════════════════════
+   NAV SCROLL
+══════════════════════════════════════ */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive:true });
+
+/* ══════════════════════════════════════
+   SCROLL REVEAL
+══════════════════════════════════════ */
 const revealEls = document.querySelectorAll('.reveal');
-const revealObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); }
-  });
+new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); } });
+}, { threshold: 0.1 }).observe = (function(orig){
+  return function(el){ orig.call(this,el); };
+})(IntersectionObserver.prototype.observe);
+
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); } });
 }, { threshold: 0.1 });
-revealEls.forEach(el => revealObs.observe(el));
+revealEls.forEach(el => obs.observe(el));
 
-/* ── DRAG SCROLL on experience track ── */
+/* ══════════════════════════════════════
+   DRAG SCROLL — EXPERIENCE
+══════════════════════════════════════ */
 const track = document.getElementById('exp-track-wrap');
-let isDown = false, startX, scrollLeft;
+let isDown=false, startX, scrollLeft;
+track.addEventListener('mousedown', e => { isDown=true; startX=e.pageX-track.offsetLeft; scrollLeft=track.scrollLeft; });
+document.addEventListener('mouseup', () => isDown=false);
+track.addEventListener('mousemove', e => { if(!isDown) return; e.preventDefault(); track.scrollLeft = scrollLeft-(e.pageX-track.offsetLeft-startX); });
 
-track.addEventListener('mousedown', e => {
-  isDown = true;
-  startX = e.pageX - track.offsetLeft;
-  scrollLeft = track.scrollLeft;
-  track.style.userSelect = 'none';
+/* ══════════════════════════════════════
+   MUSIC PLAYER
+   Uses free CC0/public domain jazz from
+   the Internet Archive
+══════════════════════════════════════ */
+const tracks = [
+  { title:'Blue Bossa', url:'https://archive.org/download/78_blue-bossa_kenny-dorham_gbia0001047b/Blue%20Bossa%20-%20Kenny%20Dorham.mp3' },
+  { title:'Autumn Leaves', url:'https://archive.org/download/78_autumn-leaves_cannonball-adderley_gbia0001391b/Autumn%20Leaves%20-%20Cannonball%20Adderley.mp3' },
+  { title:'So What', url:'https://archive.org/download/MilesDevis-KindOfBlue/01-SoWhat.mp3' },
+];
+let currentTrack = 0;
+const audio    = document.getElementById('jazz-audio');
+const vinyl    = document.getElementById('vinyl');
+const btn      = document.getElementById('music-btn');
+const titleEl  = document.getElementById('music-title');
+const progress = document.getElementById('music-progress');
+
+const playIcon = `<svg viewBox="0 0 24 24" style="width:12px;height:12px;fill:#1e0a3c"><path d="M8 5v14l11-7z"/></svg>`;
+const pauseIcon= `<svg viewBox="0 0 24 24" style="width:12px;height:12px;fill:#1e0a3c"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>`;
+
+function loadTrack(i){
+  audio.src = tracks[i].url;
+  titleEl.textContent = tracks[i].title;
+}
+loadTrack(0);
+
+btn.addEventListener('click', () => {
+  if(audio.paused){
+    audio.play().then(() => {
+      vinyl.classList.add('playing');
+      btn.innerHTML = pauseIcon;
+    }).catch(() => {
+      // autoplay blocked — try next
+    });
+  } else {
+    audio.pause();
+    vinyl.classList.remove('playing');
+    btn.innerHTML = playIcon;
+  }
 });
 
-document.addEventListener('mouseup', () => { isDown = false; });
-
-track.addEventListener('mousemove', e => {
-  if (!isDown) return;
-  e.preventDefault();
-  const x = e.pageX - track.offsetLeft;
-  track.scrollLeft = scrollLeft - (x - startX);
+audio.addEventListener('timeupdate', () => {
+  if(audio.duration) progress.style.width = (audio.currentTime/audio.duration*100)+'%';
 });
+
+audio.addEventListener('ended', () => {
+  currentTrack = (currentTrack+1) % tracks.length;
+  loadTrack(currentTrack);
+  audio.play();
+});
+
+// Try loading but don't force autoplay
+audio.load();
 </script>
-
 </body>
 </html>
