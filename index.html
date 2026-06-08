@@ -4,7 +4,57 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jonas Himawan — ECE Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<!-- SF Pro loads from the system on Apple devices; fallback chain for Windows/Android -->
+<style>
+  @font-face {
+    font-family: 'SF Pro Display';
+    src: local('SF Pro Display'), local('.SFNSDisplay'), local('SFProDisplay-Regular');
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'SF Pro Display';
+    src: local('SF Pro Display Medium'), local('.SFNSDisplay-Medium'), local('SFProDisplay-Medium');
+    font-weight: 500;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'SF Pro Display';
+    src: local('SF Pro Display Semibold'), local('.SFNSDisplay-Semibold'), local('SFProDisplay-Semibold');
+    font-weight: 600;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'SF Pro Display';
+    src: local('SF Pro Display Bold'), local('.SFNSDisplay-Bold'), local('SFProDisplay-Bold');
+    font-weight: 700;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'SF Pro Display';
+    src: local('SF Pro Display Heavy'), local('.SFNSDisplay-Heavy'), local('SFProDisplay-Heavy');
+    font-weight: 800;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'SF Pro Text';
+    src: local('SF Pro Text'), local('.SFNSText'), local('SFProText-Regular');
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'SF Pro Text';
+    src: local('SF Pro Text Medium'), local('.SFNSText-Medium'), local('SFProText-Medium');
+    font-weight: 500;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'SF Pro Text';
+    src: local('SF Pro Text Semibold'), local('.SFNSText-Semibold'), local('SFProText-Semibold');
+    font-weight: 600;
+    font-style: normal;
+  }
+</style>
 <style>
 /* ─── RESET & BASE ─── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -27,7 +77,7 @@ html { scroll-behavior: smooth; font-size: 16px; }
 body {
   background: var(--white);
   color: var(--black);
-  font-family: 'Inter', sans-serif;
+  font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   overflow-x: hidden;
 }
 
@@ -51,9 +101,9 @@ nav.scrolled {
 }
 
 .nav-logo {
-  font-family: 'Syne', sans-serif;
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   font-size: 15px;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--white);
   letter-spacing: -0.02em;
   transition: color 0.4s;
@@ -189,11 +239,11 @@ nav.scrolled .nav-cta:hover {
 
 /* ─── Replace with: <img src="your-photo.jpg" alt="Jonas Himawan" style="width:100%;height:100%;object-fit:cover"> ─── */
 .profile-name-reveal {
-  font-family: 'Syne', sans-serif;
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   font-size: clamp(36px, 5vw, 68px);
-  font-weight: 800;
+  font-weight: 700;
   color: var(--purple);
-  letter-spacing: -0.04em;
+  letter-spacing: -0.03em;
   line-height: 1;
 }
 
@@ -211,7 +261,7 @@ nav.scrolled .nav-cta:hover {
   position: relative;
   z-index: 3;
   text-align: center;
-  padding: 0 40px;
+  padding: 80px 40px 0;
   pointer-events: none;
 }
 
@@ -238,12 +288,12 @@ nav.scrolled .nav-cta:hover {
 }
 
 .hero-headline {
-  font-family: 'Syne', sans-serif;
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   font-size: clamp(52px, 8vw, 110px);
-  font-weight: 800;
+  font-weight: 500;
   color: var(--white);
-  letter-spacing: -0.04em;
-  line-height: 0.95;
+  letter-spacing: -0.03em;
+  line-height: 0.97;
 }
 
 .hero-headline em {
@@ -325,9 +375,9 @@ nav.scrolled .nav-cta:hover {
 .section-dark .section-label { color: var(--lavender); }
 
 .section-title {
-  font-family: 'Syne', sans-serif;
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   font-size: clamp(32px, 4vw, 58px);
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: -0.03em;
   line-height: 1.05;
   color: var(--purple);
@@ -373,9 +423,9 @@ nav.scrolled .nav-cta:hover {
 .stat-box:hover { background: var(--off); }
 
 .stat-num {
-  font-family: 'Syne', sans-serif;
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   font-size: 42px;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--purple);
   letter-spacing: -0.04em;
   line-height: 1;
@@ -472,9 +522,9 @@ nav.scrolled .nav-cta:hover {
 }
 
 .exp-title {
-  font-family: 'Syne', sans-serif;
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   font-size: 20px;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--white);
   letter-spacing: -0.02em;
   margin-bottom: 6px;
@@ -654,9 +704,9 @@ nav.scrolled .nav-cta:hover {
 }
 
 .project-title {
-  font-family: 'Syne', sans-serif;
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   font-size: 20px;
-  font-weight: 800;
+  font-weight: 600;
   color: var(--purple);
   letter-spacing: -0.02em;
   margin-bottom: 10px;
@@ -694,9 +744,9 @@ nav.scrolled .nav-cta:hover {
 .contact-inner { max-width: 640px; margin: 0 auto; text-align: center; }
 
 .contact-email {
-  font-family: 'Syne', sans-serif;
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   font-size: clamp(28px, 4vw, 52px);
-  font-weight: 800;
+  font-weight: 600;
   color: var(--white);
   letter-spacing: -0.03em;
   text-decoration: none;
