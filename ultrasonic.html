@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ultrasonic Difference-Frequency Generation — Jonas Himawan</title>
+<style>
+@font-face { font-family:'SF Pro Display'; src:local('SF Pro Display'),local('.SFNSDisplay'),local('SFProDisplay-Regular'); font-weight:400; }
+@font-face { font-family:'SF Pro Display'; src:local('SF Pro Display Semibold'),local('.SFNSDisplay-Semibold'); font-weight:600; }
+@font-face { font-family:'SF Pro Text'; src:local('SF Pro Text'),local('.SFNSText'),local('SFProText-Regular'); font-weight:400; }
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --white:#ffffff;
+  --off:#f7f6f4;
+  --purple:#1e0a3c;
+  --grape:#4b2e83;
+  --violet:#7c5cbf;
+  --lavender:#c4b5e8;
+  --black:#0a0a0a;
+  --gray:#6b6b6b;
+  --border:#e0dcea;
+}
+
+body{
+  background:var(--off);
+  color:var(--black);
+  font-family:'SF Pro Text',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  line-height:1.7;
+}
+
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:20;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:22px 52px;
+  background:rgba(30,10,60,.92);
+  backdrop-filter:blur(16px);
+}
+
+.nav-logo{
+  font-family:'SF Pro Display',-apple-system,system-ui,sans-serif;
+  font-size:15px;
+  font-weight:600;
+  color:var(--white);
+  text-decoration:none;
+}
+
+.nav-back{
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--white);
+  text-decoration:none;
+  border:1px solid rgba(255,255,255,.45);
+  padding:9px 18px;
+}
+
+.hero{
+  min-height:68vh;
+  padding:140px 52px 80px;
+  background:linear-gradient(180deg,rgba(13,8,32,.95),rgba(30,10,60,.9));
+  color:var(--white);
+  display:flex;
+  align-items:end;
+}
+
+.hero-inner{max-width:1050px;}
+
+.eyebrow{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--lavender);
+  margin-bottom:18px;
+}
+
+h1{
+  font-family:'SF Pro Display',-apple-system,system-ui,sans-serif;
+  font-size:clamp(42px,6.5vw,88px);
+  letter-spacing:-.055em;
+  line-height:.96;
+  font-weight:600;
+}
+
+.hero p{
+  max-width:790px;
+  margin-top:26px;
+  color:rgba(255,255,255,.72);
+  font-size:18px;
+}
+
+main{
+  padding:80px 52px;
+  max-width:1180px;
+  margin:0 auto;
+}
+
+.section-label{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--violet);
+  margin-bottom:12px;
+}
+
+h2{
+  font-family:'SF Pro Display',-apple-system,system-ui,sans-serif;
+  font-size:clamp(30px,4vw,52px);
+  letter-spacing:-.035em;
+  color:var(--purple);
+  line-height:1.05;
+  margin-bottom:28px;
+}
+
+.content-card{
+  background:var(--white);
+  border:1px solid var(--border);
+  padding:34px;
+  margin-top:24px;
+}
+
+.content-card p+p{margin-top:18px;}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:26px;
+}
+
+.tag{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--grape);
+  background:#e8e6f0;
+  padding:6px 12px;
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:24px;
+  margin:42px 0;
+}
+
+.figure{
+  background:var(--white);
+  border:1px solid var(--border);
+  padding:16px;
+}
+
+.figure img{
+  width:100%;
+  height:260px;
+  object-fit:contain;
+  display:block;
+  background:#f1eff6;
+}
+
+.caption{
+  font-size:12px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--gray);
+  margin-top:10px;
+}
+
+.callout{
+  background:var(--purple);
+  color:var(--white);
+  padding:30px;
+  margin-top:30px;
+}
+
+.callout strong{color:var(--lavender);}
+
+footer{
+  padding:28px 52px;
+  background:var(--black);
+  color:rgba(255,255,255,.35);
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+@media(max-width:860px){
+  nav{padding:16px 24px;}
+  .hero{padding:120px 24px 60px;}
+  main{padding:60px 24px;}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">Jonas Himawan</a>
+  <a class="nav-back" href="index.html#projects">Back to Projects</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">C/C++ · Python · Arduino · PlatformIO · Signal Processing</div>
+    <h1>Ultrasonic Difference-Frequency Generation</h1>
+    <p>
+      This research project studies how two ultrasonic signals can interact in air to create an audible sound at their difference frequency. In simpler terms, we use speakers that play sounds humans normally cannot hear, then measure whether the air itself helps produce a lower-frequency sound that can be detected by a microphone.
+    </p>
+
+    <div class="tags">
+      <span class="tag">C/C++</span>
+      <span class="tag">Python</span>
+      <span class="tag">Arduino</span>
+      <span class="tag">PlatformIO</span>
+      <span class="tag">FFT</span>
+      <span class="tag">Spectrograms</span>
+      <span class="tag">Fusion 360</span>
+      <span class="tag">Stepper Motor</span>
+    </div>
+  </div>
+</section>
+
+<main>
+
+  <div class="section-label">Project Details</div>
+  <h2>Automating acoustic experiments for ultrasonic source reproduction.</h2>
+
+  <div class="content-card">
+    <p>
+      This project is inspired by research on acoustic source projection using air nonlinearity. The core idea is that if two ultrasonic tones are played together, the nonlinear behavior of air can produce a new sound at the difference between those two frequencies. For example, two ultrasonic signals around 20 kHz and 23 kHz can create a detectable 3 kHz difference-frequency component.
+    </p>
+
+    <p>
+      My work focuses on building and improving the experimental setup used to test this effect. I designed a Fusion 360 positioning rig, wired and programmed stepper motor control in PlatformIO using C/C++, and helped create a synchronized data collection pipeline that coordinates motor movement with microphone capture.
+    </p>
+
+    <p>
+      The system logs microphone data into a structured table, allowing experiments to be repeated more efficiently and analyzed more consistently. This automation sped up experimental data collection by approximately 400%.
+    </p>
+  </div>
+
+  <div class="section-label" style="margin-top:54px;">Build Process</div>
+  <h2>Positioning, speaker alignment, and data collection.</h2>
+
+  <div class="gallery">
+
+    <div class="figure">
+      <img src="Screenshot 2026-06-10 023618.png" alt="Fusion 360 positioning rig">
+      <div class="caption">Fusion 360 positioning rig</div>
+    </div>
+
+    <div class="figure">
+      <img src="Screenshot 2026-06-10 023922.png" alt="Stepper motor setup">
+      <div class="caption">Stepper motor setup</div>
+    </div>
+
+    <div class="figure">
+      <img src="Screenshot 2026-06-10 024005.png" alt="Layout of two ultrasonic speakers">
+      <div class="caption">Layout of the two ultrasonic speakers</div>
+    </div>
+
+  </div>
+
+  <div class="content-card">
+    <p>
+      A major challenge in this project was collecting enough data across different speaker and microphone positions. Manual positioning was slow and inconsistent, so I helped design a motorized positioning setup that could move the microphone or test platform more precisely between measurements.
+    </p>
+
+    <p>
+      I implemented C/C++ stepper motor control in PlatformIO and helped synchronize the motion system with microphone data capture. This made it possible to run experiments more quickly while keeping the data organized for later analysis.
+    </p>
+
+    <p>
+      I also worked on improving detection of the 3 kHz difference-frequency peak by using 3D-printed speaker fixtures and Python-based FFT and spectrogram analysis. These tools helped evaluate whether the expected audible component appeared in the microphone data and improved peak detection by approximately 25%.
+    </p>
+  </div>
+
+  <div class="callout">
+    <strong>Key contribution:</strong><br>
+    Designed and built experimental hardware for ultrasonic difference-frequency generation, including a Fusion 360 positioning rig, C/C++ stepper motor control in PlatformIO, synchronized data collection, and Python FFT/spectrogram analysis for detecting a 3 kHz difference-frequency peak.
+  </div>
+
+</main>
+
+<footer>© 2026 Jonas Himawan · Ultrasonic Difference-Frequency Generation</footer>
+
+</body>
+</html>
