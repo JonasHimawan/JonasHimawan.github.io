@@ -8,52 +8,203 @@
 @font-face { font-family:'SF Pro Display'; src:local('SF Pro Display'),local('.SFNSDisplay'),local('SFProDisplay-Regular'); font-weight:400; }
 @font-face { font-family:'SF Pro Display'; src:local('SF Pro Display Semibold'),local('.SFNSDisplay-Semibold'); font-weight:600; }
 @font-face { font-family:'SF Pro Text'; src:local('SF Pro Text'),local('.SFNSText'),local('SFProText-Regular'); font-weight:400; }
+
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
 :root{
-  --white:#ffffff;--off:#f7f6f4;--purple:#1e0a3c;--grape:#4b2e83;
-  --violet:#7c5cbf;--lavender:#c4b5e8;--black:#0a0a0a;--gray:#6b6b6b;--border:#e0dcea;
+  --white:#ffffff;
+  --off:#f7f6f4;
+  --purple:#1e0a3c;
+  --grape:#4b2e83;
+  --violet:#7c5cbf;
+  --lavender:#c4b5e8;
+  --black:#0a0a0a;
+  --gray:#6b6b6b;
+  --border:#e0dcea;
 }
+
 body{
-  background:var(--off); color:var(--black);
+  background:var(--off);
+  color:var(--black);
   font-family:'SF Pro Text',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
   line-height:1.7;
 }
+
 nav{
-  position:fixed;top:0;left:0;right:0;z-index:20;
-  display:flex;justify-content:space-between;align-items:center;
-  padding:22px 52px;background:rgba(30,10,60,.92);backdrop-filter:blur(16px);
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:20;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:22px 52px;
+  background:rgba(30,10,60,.92);
+  backdrop-filter:blur(16px);
 }
-.nav-logo{font-family:'SF Pro Display',-apple-system,system-ui,sans-serif;font-size:15px;font-weight:600;color:var(--white);text-decoration:none;}
-.nav-back{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--white);text-decoration:none;border:1px solid rgba(255,255,255,.45);padding:9px 18px;}
+
+.nav-logo{
+  font-family:'SF Pro Display',-apple-system,system-ui,sans-serif;
+  font-size:15px;
+  font-weight:600;
+  color:var(--white);
+  text-decoration:none;
+}
+
+.nav-back{
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--white);
+  text-decoration:none;
+  border:1px solid rgba(255,255,255,.45);
+  padding:9px 18px;
+}
+
 .hero{
-  min-height:68vh;padding:140px 52px 80px;
+  min-height:68vh;
+  padding:140px 52px 80px;
   background:linear-gradient(180deg,rgba(13,8,32,.95),rgba(30,10,60,.9));
-  color:var(--white);display:flex;align-items:end;
+  color:var(--white);
+  display:flex;
+  align-items:end;
 }
+
 .hero-inner{max-width:1050px;}
-.eyebrow{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--lavender);margin-bottom:18px;}
-h1{font-family:'SF Pro Display',-apple-system,system-ui,sans-serif;font-size:clamp(44px,7vw,92px);letter-spacing:-.055em;line-height:.96;font-weight:600;}
-.hero p{max-width:720px;margin-top:26px;color:rgba(255,255,255,.68);font-size:18px;}
-main{padding:80px 52px;max-width:1180px;margin:0 auto;}
-.section-label{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--violet);margin-bottom:12px;}
-h2{font-family:'SF Pro Display',-apple-system,system-ui,sans-serif;font-size:clamp(30px,4vw,52px);letter-spacing:-.035em;color:var(--purple);line-height:1.05;margin-bottom:28px;}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:42px 0;}
-.project-img{background:var(--white);border:1px solid var(--border);padding:18px;min-height:260px;display:flex;align-items:center;justify-content:center;}
-.project-img img{max-width:100%;max-height:420px;object-fit:contain;display:block;}
-.caption{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gray);margin-top:10px;}
-.content-card{background:var(--white);border:1px solid var(--border);padding:34px;margin-top:24px;}
+
+.eyebrow{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--lavender);
+  margin-bottom:18px;
+}
+
+h1{
+  font-family:'SF Pro Display',-apple-system,system-ui,sans-serif;
+  font-size:clamp(44px,7vw,92px);
+  letter-spacing:-.055em;
+  line-height:.96;
+  font-weight:600;
+}
+
+.hero p{
+  max-width:760px;
+  margin-top:26px;
+  color:rgba(255,255,255,.72);
+  font-size:18px;
+}
+
+main{
+  padding:80px 52px;
+  max-width:1180px;
+  margin:0 auto;
+}
+
+.section-label{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--violet);
+  margin-bottom:12px;
+}
+
+h2{
+  font-family:'SF Pro Display',-apple-system,system-ui,sans-serif;
+  font-size:clamp(30px,4vw,52px);
+  letter-spacing:-.035em;
+  color:var(--purple);
+  line-height:1.05;
+  margin-bottom:28px;
+}
+
+.content-card{
+  background:var(--white);
+  border:1px solid var(--border);
+  padding:34px;
+  margin-top:24px;
+}
+
 .content-card p+p{margin-top:18px;}
-.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px;}
-.tag{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--grape);background:#e8e6f0;padding:6px 12px;}
-.callout{background:var(--purple);color:var(--white);padding:28px;margin-top:30px;}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:26px;
+}
+
+.tag{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--grape);
+  background:#e8e6f0;
+  padding:6px 12px;
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:24px;
+  margin:42px 0;
+}
+
+.figure{
+  background:var(--white);
+  border:1px solid var(--border);
+  padding:16px;
+}
+
+.figure img{
+  width:100%;
+  height:260px;
+  object-fit:contain;
+  display:block;
+  background:#f1eff6;
+}
+
+.caption{
+  font-size:12px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--gray);
+  margin-top:10px;
+}
+
+.callout{
+  background:var(--purple);
+  color:var(--white);
+  padding:30px;
+  margin-top:30px;
+}
+
 .callout strong{color:var(--lavender);}
-footer{padding:28px 52px;background:var(--black);color:rgba(255,255,255,.35);font-size:11px;text-transform:uppercase;letter-spacing:.08em;}
+
+footer{
+  padding:28px 52px;
+  background:var(--black);
+  color:rgba(255,255,255,.35);
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
 @media(max-width:860px){
-  nav{padding:16px 24px}.hero{padding:120px 24px 60px}main{padding:60px 24px}.grid{grid-template-columns:1fr}
+  nav{padding:16px 24px;}
+  .hero{padding:120px 24px 60px;}
+  main{padding:60px 24px;}
 }
 </style>
 </head>
+
 <body>
+
 <nav>
   <a class="nav-logo" href="index.html">Jonas Himawan</a>
   <a class="nav-back" href="index.html#projects">Back to Projects</a>
@@ -61,45 +212,99 @@ footer{padding:28px 52px;background:var(--black);color:rgba(255,255,255,.35);fon
 
 <section class="hero">
   <div class="hero-inner">
-    <div class="eyebrow">ESP32 · Bluetooth · KiCad · Sensors</div>
+    <div class="eyebrow">ESP32 · BLE · Load Cell · NeoPixel · KiCad</div>
     <h1>SipSync</h1>
     <p>
-      A smart hydration-tracking bottle prototype built through UW Fitness Tech, focused on embedded hardware, firmware, sensor integration, Bluetooth communication, and mobile app connectivity.
+      SipSync is a smart hydration-tracking bottle prototype built through UW Fitness Tech. It uses embedded hardware, C/C++ firmware, sensor integration, Bluetooth Low Energy, real-time LED feedback, and custom PCB design to track sip data and sync hydration behavior with the MyFitnessTech mobile app.
     </p>
+
     <div class="tags">
       <span class="tag">ESP32</span>
-      <span class="tag">Bluetooth</span>
-      <span class="tag">Sensors</span>
+      <span class="tag">BLE</span>
+      <span class="tag">HX711</span>
+      <span class="tag">Load Cell</span>
+      <span class="tag">MPU-6050</span>
+      <span class="tag">NeoPixel</span>
       <span class="tag">KiCad</span>
-      <span class="tag">Firmware</span>
+      <span class="tag">Soldering</span>
     </div>
   </div>
 </section>
 
 <main>
+
   <div class="section-label">Project Details</div>
   <h2>Embedded hardware for smart hydration tracking.</h2>
+
   <div class="content-card">
     <p>
-      SipSync is a smart water bottle concept designed to track hydration behavior and connect with a mobile app. As part of the Fitness Tech hardware development team, I worked on embedded hardware and firmware development using ESP32-based systems, sensor integration, Bluetooth connectivity, and custom PCB design.
+      SipSync tracks hydration using an HX711 load cell amplifier paired with a 1–5 kg straight-bar load cell. The system measures changes in bottle weight to estimate sip activity and syncs hydration data to the MyFitnessTech mobile app over Bluetooth Low Energy.
     </p>
+
     <p>
-      The project follows a complete hardware development pipeline: breadboard prototyping, circuit design, sensor testing, firmware development, PCB design, soldering, and validation. This page can be expanded with photos, schematics, PCB screenshots, and demo videos as the project develops further.
+      I implemented and integrated the main embedded hardware subsystems, including BLE connectivity, NeoPixel LED control, sensor input, and power regulation. The prototype uses a 3.7 V LiPo battery, TP4056 charging module, DC-DC boost converter, MPU-6050 accelerometer, and a 17-LED WS2812B NeoPixel ring for real-time feedback.
+    </p>
+
+    <p>
+      I designed the full circuit, hand-soldered a working protoboard, and wrote C/C++ firmware for hydration feedback states such as drinking, not drinking, and empty. I also designed a custom KiCad PCB for a future compact version of the system.
     </p>
   </div>
 
-  <div class="grid">
-    <div>
-      <div class="project-img"><img src="sipsync.jpg" alt="SipSync prototype image"></div>
-      <div class="caption">Add SipSync prototype image here</div>
+  <div class="section-label" style="margin-top:54px;">Build Process</div>
+  <h2>From breadboard prototype to working embedded system.</h2>
+
+  <div class="gallery">
+
+    <div class="figure">
+      <img src="loadCell.png" alt="Load cell Fusion 360 design">
+      <div class="caption">Load cell Fusion design</div>
     </div>
-    <div class="callout">
-      <strong>Next update:</strong><br>
-      Add breadboard photos, PCB screenshots, firmware architecture, and mobile app integration details.
+
+    <div class="figure">
+      <img src="Screenshot 2026-06-10 022351.png" alt="SipSync breadboard prototype">
+      <div class="caption">Breadboard prototype</div>
     </div>
+
+    <div class="figure">
+      <img src="Screenshot 2026-06-10 022315.png" alt="SipSync first prototype">
+      <div class="caption">First prototype</div>
+    </div>
+
+    <div class="figure">
+      <img src="Screenshot 2026-06-10 022326.png" alt="SipSync sensor layout">
+      <div class="caption">Layout of sensors</div>
+    </div>
+
+    <div class="figure">
+      <img src="Screenshot 2026-06-10 022343.png" alt="SipSync soldering process">
+      <div class="caption">Soldering process</div>
+    </div>
+
+    <div class="figure">
+      <img src="Screenshot 2026-06-10 022401.png" alt="SipSync working protoboard">
+      <div class="caption">Working protoboard</div>
+    </div>
+
   </div>
+
+  <div class="content-card">
+    <p>
+      The early prototype was built on a breadboard to test the load cell, HX711 amplifier, accelerometer, NeoPixel ring, and ESP32 microcontroller. This allowed the hardware team to validate sensor behavior, power requirements, and communication between each subsystem before moving toward a more permanent build.
+    </p>
+
+    <p>
+      After validating the circuit, I moved the design onto a protoboard and hand-soldered the system to create a more reliable prototype. This step helped reduce loose wiring issues and made the device easier to test as a connected embedded system.
+    </p>
+  </div>
+
+  <div class="callout">
+    <strong>Key contribution:</strong><br>
+    Designed and built embedded hardware for SipSync, integrating load sensing, accelerometer-based sip detection, BLE communication, NeoPixel feedback, LiPo power circuitry, soldered protoboard assembly, and custom KiCad PCB planning.
+  </div>
+
 </main>
 
 <footer>© 2026 Jonas Himawan · SipSync</footer>
+
 </body>
 </html>
