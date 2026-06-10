@@ -15,8 +15,8 @@
 @font-face { font-family:'SF Pro Text'; src:local('SF Pro Text Semibold'),local('.SFNSText-Semibold'); font-weight:600; }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;scroll-snap-type:y proximity;}
-body{scroll-snap-type:y proximity;}
+html{scroll-behavior:smooth;}
+body{scroll-snap-type:none;}
 
 :root{
   --white:#ffffff;
@@ -792,46 +792,7 @@ const obs = new IntersectionObserver(entries => {
 revealEls.forEach(el => obs.observe(el));
 
 
-/* ══════════════════════════════════════
-   FULL-PAGE SECTION TRANSITIONS
-   Each section has a different scroll animation.
-══════════════════════════════════════ */
-const animatedSections = [...document.querySelectorAll('section.section')];
 
-animatedSections.forEach(section => {
-  if(!section.querySelector(':scope > .section-content')){
-    const wrap = document.createElement('div');
-    wrap.className = 'section-content';
-    while(section.firstChild) wrap.appendChild(section.firstChild);
-    section.appendChild(wrap);
-  }
-});
-
-function clamp01(v){ return Math.min(1, Math.max(0, v)); }
-
-function updateSectionTransitions(){
-  animatedSections.forEach((section) => {
-    const content = section.querySelector('.section-content');
-    const rect = section.getBoundingClientRect();
-    const scrollable = Math.max(1, section.offsetHeight - window.innerHeight);
-    const progress = clamp01(-rect.top / scrollable);
-
-    // Calm section transition: no left/right movement and no blur.
-    // Each page gently lifts and fades as the next page comes in.
-    const fadeStart = section.id === 'contact' ? 0.82 : 0.74;
-    const fadeRange = 1 - fadeStart;
-    let opacity = progress < fadeStart ? 1 : 1 - ((progress - fadeStart) / fadeRange);
-    opacity = Math.max(0, opacity);
-
-    const lift = -42 * progress;
-    content.style.opacity = opacity.toFixed(3);
-    content.style.transform = `translate3d(0, ${lift}px, 0)`;
-    content.style.filter = 'none';
-  });
-}
-window.addEventListener('scroll', updateSectionTransitions, { passive:true });
-window.addEventListener('resize', updateSectionTransitions);
-updateSectionTransitions();
 
 /* ══════════════════════════════════════
    DRAG SCROLL — EXPERIENCE
