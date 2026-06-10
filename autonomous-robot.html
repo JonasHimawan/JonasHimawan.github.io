@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Autonomous Line-Following Robot — Jonas Himawan</title>
+<style>
+@font-face { font-family:'SF Pro Display'; src:local('SF Pro Display'),local('.SFNSDisplay'),local('SFProDisplay-Regular'); font-weight:400; }
+@font-face { font-family:'SF Pro Display'; src:local('SF Pro Display Semibold'),local('.SFNSDisplay-Semibold'); font-weight:600; }
+@font-face { font-family:'SF Pro Text'; src:local('SF Pro Text'),local('.SFNSText'),local('SFProText-Regular'); font-weight:400; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --white:#ffffff;--off:#f7f6f4;--purple:#1e0a3c;--grape:#4b2e83;
+  --violet:#7c5cbf;--lavender:#c4b5e8;--black:#0a0a0a;--gray:#6b6b6b;--border:#e0dcea;
+}
+body{
+  background:var(--off); color:var(--black);
+  font-family:'SF Pro Text',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  line-height:1.7;
+}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:20;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:22px 52px;background:rgba(30,10,60,.92);backdrop-filter:blur(16px);
+}
+.nav-logo{font-family:'SF Pro Display',-apple-system,system-ui,sans-serif;font-size:15px;font-weight:600;color:var(--white);text-decoration:none;}
+.nav-back{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--white);text-decoration:none;border:1px solid rgba(255,255,255,.45);padding:9px 18px;}
+.hero{
+  min-height:68vh;padding:140px 52px 80px;
+  background:linear-gradient(180deg,rgba(13,8,32,.95),rgba(30,10,60,.9));
+  color:var(--white);display:flex;align-items:end;
+}
+.hero-inner{max-width:1050px;}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--lavender);margin-bottom:18px;}
+h1{font-family:'SF Pro Display',-apple-system,system-ui,sans-serif;font-size:clamp(44px,7vw,92px);letter-spacing:-.055em;line-height:.96;font-weight:600;}
+.hero p{max-width:720px;margin-top:26px;color:rgba(255,255,255,.68);font-size:18px;}
+main{padding:80px 52px;max-width:1180px;margin:0 auto;}
+.section-label{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--violet);margin-bottom:12px;}
+h2{font-family:'SF Pro Display',-apple-system,system-ui,sans-serif;font-size:clamp(30px,4vw,52px);letter-spacing:-.035em;color:var(--purple);line-height:1.05;margin-bottom:28px;}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin:42px 0;}
+.project-img{background:var(--white);border:1px solid var(--border);padding:18px;min-height:260px;display:flex;align-items:center;justify-content:center;}
+.project-img img{max-width:100%;max-height:420px;object-fit:contain;display:block;}
+.caption{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--gray);margin-top:10px;}
+.content-card{background:var(--white);border:1px solid var(--border);padding:34px;margin-top:24px;}
+.content-card p+p{margin-top:18px;}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px;}
+.tag{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--grape);background:#e8e6f0;padding:6px 12px;}
+.callout{background:var(--purple);color:var(--white);padding:28px;margin-top:30px;}
+.callout strong{color:var(--lavender);}
+footer{padding:28px 52px;background:var(--black);color:rgba(255,255,255,.35);font-size:11px;text-transform:uppercase;letter-spacing:.08em;}
+@media(max-width:860px){
+  nav{padding:16px 24px}.hero{padding:120px 24px 60px}main{padding:60px 24px}.grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="index.html">Jonas Himawan</a>
+  <a class="nav-back" href="index.html#projects">Back to Projects</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Arduino · KiCad · Fusion 360 · Sensors</div>
+    <h1>Autonomous Line-Following Robot</h1>
+    <p>
+      A hardware-focused robot project using an Arduino Mega, motors, photoresistors, a custom KiCad sensor PCB, and a Fusion 360 chassis to detect and follow a track.
+    </p>
+    <div class="tags">
+      <span class="tag">Arduino Mega</span>
+      <span class="tag">Photoresistors</span>
+      <span class="tag">KiCad PCB</span>
+      <span class="tag">Fusion 360</span>
+      <span class="tag">Soldering</span>
+      <span class="tag">Motor Control</span>
+    </div>
+  </div>
+</section>
+
+<main>
+  <div class="section-label">Overview</div>
+  <h2>From breadboard prototype to a working robot.</h2>
+  <div class="content-card">
+    <p>
+      This project focused on designing and building a line-following robot using an Arduino Mega, DC motors, and light sensors. The goal was to create a robot that could detect a line on the ground and automatically adjust its movement to stay on track. The robot used photoresistors to detect differences between dark and light surfaces, then adjusted motor speed to remain aligned with the path.
+    </p>
+    <p>
+      We began by building and testing sensor circuits with photoresistors and potentiometers on a breadboard. Later, we designed a custom KiCad PCB for the photoresistors to improve how the robot read light values, and we created a custom chassis in Fusion 360. Once the chassis and PCB were fabricated, we assembled the robot and developed the calibration and line-following code.
+    </p>
+    <p>
+      The robot required significant debugging. One major issue was inconsistent photoresistor readings, which prevented the robot from detecting the track properly. After troubleshooting, we found that the issue was caused by poor soldering; once the faulty connection was repaired, the robot successfully completed the full track and made the leaderboard with a time of 1 minute and 10 seconds.
+    </p>
+  </div>
+
+  <div class="grid">
+    <div>
+      <div class="project-img"><img src="chassis.png" alt="Fusion 360 chassis design for the autonomous line-following robot"></div>
+      <div class="caption">Custom chassis designed in Fusion 360</div>
+    </div>
+    <div>
+      <div class="project-img"><img src="PCBEE201.png" alt="KiCad PCB layout for the photoresistor sensor array"></div>
+      <div class="caption">KiCad sensor-array PCB layout</div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div>
+      <div class="project-img"><img src="ee201robot.png" alt="Final assembled autonomous line-following robot"></div>
+      <div class="caption">Final assembled robot</div>
+    </div>
+    <div class="callout">
+      <strong>Final Result:</strong><br>
+      Completed the full track and reached the leaderboard with a time of <strong>1 minute and 10 seconds</strong>.
+    </div>
+  </div>
+
+  <div class="section-label">Development Process</div>
+  <h2>Testing sensors, building hardware, and debugging the system.</h2>
+  <div class="content-card">
+    <p>
+      The robot development process began with circuit testing on a breadboard to understand how the potentiometers and photoresistors behaved. A potentiometer circuit was assembled and connected to the Arduino so changes in resistance could be observed through the Serial Monitor. This showed that rotating the potentiometer clockwise decreased the measured values, while rotating it in the opposite direction increased them.
+    </p>
+    <p>
+      Next, a photoresistor circuit was built on the breadboard to evaluate how the sensors responded to changes in light intensity. From this testing, we determined that the photoresistors were highly sensitive to ambient light and performed best when positioned as close to the surface as possible without making contact. This finding helped guide final sensor placement so the robot could accurately detect contrast between the track and surrounding surface.
+    </p>
+    <p>
+      After gaining a better understanding of the sensors, a mock robot was assembled using a premade chassis. This prototype included two breadboards, an Arduino, two DC motors, wheels, and a 6 V battery pack. The mock robot helped test component placement and evaluate how the electrical and mechanical systems would fit together before the final design was built.
+    </p>
+    <p>
+      A custom PCB was then designed in KiCad based on the photoresistor breadboard circuit. This PCB provided a more permanent and organized sensor system. Green LEDs were added to the PCB as a light-shielding feature to improve the consistency and accuracy of the photoresistor readings.
+    </p>
+    <p>
+      Following the PCB design, a custom chassis was created in Fusion 360. The chassis was intentionally kept minimal to reduce weight and improve the robot's speed, while still allowing room for future modifications. After the chassis and PCB were fabricated, the team assembled the final robot and added a small 3D-printed mount for wire routing and Arduino support.
+    </p>
+    <p>
+      Additional improvements were made to the power system and sensor shielding. A 9 V battery was added so motor power and Arduino power could be supplied separately, improving the robot's ability to travel across the full track. A physical light shield was also added to improve photoresistor reliability; the first version was made from cardboard, then replaced with a thinner and lighter material.
+    </p>
+  </div>
+
+  <div class="section-label">Debugging</div>
+  <h2>Solving inconsistent sensor readings.</h2>
+  <div class="content-card">
+    <p>
+      During testing, one photoresistor produced readings that were significantly different from the other six sensors. This caused the robot to make inaccurate turns and sometimes fail to detect whether it was on or off the track. Adjusting the potentiometers initially caused no noticeable change in performance, which indicated another issue in the system.
+    </p>
+    <p>
+      First, the team tried modifying the code to ignore the faulty photoresistor, but this reduced the robot's turning accuracy even further. The wiring was then inspected, and the potentiometers were found to be connected incorrectly to the Arduino. After correcting the wiring, the team investigated the robot's internal connections and identified a soldering issue as the source of the faulty sensor readings.
+    </p>
+    <p>
+      The defective photoresistor and its associated wiring were resoldered, restoring accurate sensor output. After reassembly and additional testing, the sensor readings became consistent and the robot successfully followed the line. Final adjustments were made to the potentiometer and control values, allowing the robot to complete the entire track.
+    </p>
+  </div>
+</main>
+
+<footer>© 2026 Jonas Himawan · Autonomous Line-Following Robot</footer>
+</body>
+</html>
