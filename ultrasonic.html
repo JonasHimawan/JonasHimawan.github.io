@@ -248,6 +248,10 @@ footer{
     <p>
       The system logs microphone data into a structured table, allowing experiments to be repeated more efficiently and analyzed more consistently. This automation sped up experimental data collection by approximately 400%.
     </p>
+
+    <p>
+  This project is still in progress. One of the main challenges we are currently facing is that the generated difference-frequency signal is not strong enough to consistently measure at the desired level. To address this, we are exploring a custom PCB design for an 8×8 array of ultrasonic speakers, which would allow for stronger, more controlled ultrasonic output and better experimental values.
+    </p>
   </div>
 
   <div class="section-label" style="margin-top:54px;">Build Process</div>
@@ -274,11 +278,11 @@ footer{
 
   <div class="content-card">
     <p>
-      A major challenge in this project was collecting enough data across different speaker and microphone positions. Manual positioning was slow and inconsistent, so I helped design a motorized positioning setup that could move the microphone or test platform more precisely between measurements.
+      A major challenge in this project was collecting enough data across different speaker and microphone positions. Manual positioning was slow and inconsistent, so I helped design a motorized positioning setup that automated the data collection process. 
     </p>
 
     <p>
-      I implemented C/C++ stepper motor control in PlatformIO and helped synchronize the motion system with microphone data capture. This made it possible to run experiments more quickly while keeping the data organized for later analysis.
+      I implemented C/C++ stepper motor control in PlatformIO and helped synchronize the motion system with microphone data capture. This made it possible to run experiments more quickly while keeping the data organized for later analysis. This process was able to speed up data collectuon by 400%.
     </p>
 
     <p>
