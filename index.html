@@ -560,49 +560,72 @@ footer{background:var(--black);padding:28px 52px;display:flex;justify-content:sp
 <div class="divider"></div>
 <!-- PROJECTS -->
 <section class="section section-off" id="projects">
-<div class="section-label">Projects</div>
-<h2 class="section-title">Things I've built</h2>
-<div class="projects-grid reveal">
-<div class="project-card">
-<!-- 📸 Replace placeholder with: <div class="project-img"><img src="sipsync.jpg" alt="SipSync"></div> -->
-<div class="project-placeholder">
-<svg class="ph-icon" fill="none" viewbox="0 0 48 48"><rect height="40" rx="5" stroke="#4b2e83" stroke-width="1.5" width="16" x="16" y="4"></rect><rect height="4" stroke="#4b2e83" stroke-width="1" width="8" x="20" y="14"></rect><line stroke="#4b2e83" stroke-width="1.5" x1="24" x2="24" y1="30" y2="36"></line></svg>
-<span class="ph-txt">Add project image</span>
-</div>
-<div class="project-body">
-<div class="project-tags"><span class="project-tag">C/C++</span><span class="project-tag">ESP32</span><span class="project-tag">KiCad</span><span class="project-tag">Bluetooth</span></div>
-<div class="project-title">SipSync</div>
-<div class="project-desc">Proof-of-concept smart water bottle tracking hydration and syncing sip data with the MyFitnessTech mobile app. Integrated XIAO ESP32, load cell, accelerometer, LED strip, LiPo battery, boost converter, and Bluetooth. Designed a custom KiCad PCB to move from breadboard to compact hardware.</div>
-</div>
-<div class="project-footer"><a class="project-link" href="#">GitHub ↗</a><a class="project-link" href="#">Demo ↗</a></div>
-</div>
-<div class="project-card">
-<!-- 📸 Replace placeholder with: <div class="project-img"><img src="dfg.jpg" alt="Ultrasonic DFG"></div> -->
-<div class="project-placeholder">
-<svg class="ph-icon" fill="none" viewbox="0 0 48 48"><circle cx="24" cy="24" r="16" stroke="#4b2e83" stroke-width="1.5"></circle><path d="M14 24c0-5.5 4.5-10 10-10" stroke="#4b2e83" stroke-linecap="round" stroke-width="1"></path><path d="M10 24c0-7.7 6.3-14 14-14" opacity=".5" stroke="#4b2e83" stroke-linecap="round" stroke-width="1"></path><circle cx="24" cy="24" fill="#4b2e83" opacity=".4" r="3"></circle></svg>
-<span class="ph-txt">Add project image</span>
-</div>
-<div class="project-body">
-<div class="project-tags"><span class="project-tag">C/C++</span><span class="project-tag">Python</span><span class="project-tag">Arduino</span><span class="project-tag">Signal Processing</span></div>
-<div class="project-title">Ultrasonic Difference-Frequency Generation</div>
-<div class="project-desc">Signal generation setup with 20 kHz and 23 kHz ultrasonic speakers to evaluate DFG at the NEWT Lab. Sped up data collection by 400% with a Fusion 360 stepper motor positioning system. Improved 3 kHz peak detection by 25% using Python FFT/spectrogram analysis.</div>
-</div>
-<div class="project-footer"><a class="project-link" href="#">GitHub ↗</a><a class="project-link" href="#">Paper ↗</a></div>
-</div>
-<div class="project-card">
-<!-- 📸 Replace placeholder with: <div class="project-img"><img src="robot.jpg" alt="Line Robot"></div> -->
-<div class="project-placeholder">
-<svg class="ph-icon" fill="none" viewbox="0 0 48 48"><rect height="16" rx="3" stroke="#4b2e83" stroke-width="1.5" width="28" x="10" y="16"></rect><circle cx="15" cy="36" r="5" stroke="#4b2e83" stroke-width="1.5"></circle><circle cx="33" cy="36" r="5" stroke="#4b2e83" stroke-width="1.5"></circle></svg>
-<span class="ph-txt">Add project image</span>
-</div>
-<div class="project-body">
-<div class="project-tags"><span class="project-tag">KiCad</span><span class="project-tag">Arduino</span><span class="project-tag">C/C++</span><span class="project-tag">Fusion 360</span></div>
-<div class="project-title">Autonomous Line-Following Robot</div>
-<div class="project-desc">Custom Fusion 360 chassis and KiCad photoresistor sensor array PCB. Wrote Arduino Mega firmware for sensor calibration, real-time photoresistor processing, and PID motor control — achieving the 6th-fastest course time.</div>
-</div>
-<div class="project-footer"><a class="project-link" href="#">GitHub ↗</a><a class="project-link" href="#">Demo ↗</a></div>
-</div>
-</div>
+  <div class="section-label">Projects</div>
+  <h2 class="section-title">Things I've built</h2>
+
+  <div class="projects-grid reveal">
+
+    <div class="project-card">
+      <div class="project-placeholder">
+        <span class="ph-txt">Add SipSync image</span>
+      </div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag">C/C++</span>
+          <span class="project-tag">ESP32</span>
+          <span class="project-tag">KiCad</span>
+          <span class="project-tag">Bluetooth</span>
+        </div>
+        <div class="project-title">SipSync</div>
+        <div class="project-desc"></div>
+      </div>
+      <div class="project-footer">
+        <a class="project-link" href="#">GitHub ↗</a>
+        <a class="project-link" href="sipsync.html">Project Page ↗</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-placeholder">
+        <span class="ph-txt">Add DFG image</span>
+      </div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag">C/C++</span>
+          <span class="project-tag">Python</span>
+          <span class="project-tag">Arduino</span>
+          <span class="project-tag">Signal Processing</span>
+        </div>
+        <div class="project-title">Ultrasonic Difference-Frequency Generation</div>
+        <div class="project-desc"></div>
+      </div>
+      <div class="project-footer">
+        <a class="project-link" href="#">GitHub ↗</a>
+        <a class="project-link" href="ultrasonic.html">Project Page ↗</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-img">
+        <img src="ee201robot.png" alt="Autonomous line-following robot">
+      </div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag">KiCad</span>
+          <span class="project-tag">Arduino</span>
+          <span class="project-tag">C/C++</span>
+          <span class="project-tag">Fusion 360</span>
+        </div>
+        <div class="project-title">Autonomous Line-Following Robot</div>
+        <div class="project-desc"></div>
+      </div>
+      <div class="project-footer">
+        <a class="project-link" href="#">GitHub ↗</a>
+        <a class="project-link" href="autonomous-robot.html">Project Page ↗</a>
+      </div>
+    </div>
+
+  </div>
 </section>
 <!-- CONTACT -->
 <section class="section section-dark" id="contact">
@@ -841,10 +864,10 @@ track.addEventListener('mousemove', e => { if(!isDown) return; e.preventDefault(
    the Internet Archive
 ══════════════════════════════════════ */
 const tracks = [
-  { title:'Lofi Dreams', url:'lofidreams-sakura-lofi-ambient-lofi-music-340018.mp3' },
+  { title:'Lofi', url:'lofidreams-sakura-lofi-ambient-lofi-music-340018.mp3' },
 ];
 let currentTrack = 0;
-const audio    = document.getElementById('jazz-audio');
+const audio    = document.getElementById('audio');
 const vinyl    = document.getElementById('vinyl');
 const btn      = document.getElementById('music-btn');
 const titleEl  = document.getElementById('music-title');
