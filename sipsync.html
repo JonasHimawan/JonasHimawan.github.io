@@ -238,15 +238,15 @@ footer{
 
   <div class="content-card">
     <p>
-      SipSync tracks hydration using an HX711 load cell amplifier paired with a 1–5 kg straight-bar load cell. The system measures changes in bottle weight to estimate sip activity and syncs hydration data to the MyFitnessTech mobile app over Bluetooth Low Energy.
+      SipSync tracks hydration and sip activity by measuring the bottle’s water weight with a 1–5 kg load cell and HX711 amplifier. I designed a custom 3D-printed plate that attaches to the load cell so the bottle can apply force consistently during testing.
     </p>
-
+    
     <p>
-      I implemented and integrated the main embedded hardware subsystems, including BLE connectivity, NeoPixel LED control, sensor input, and power regulation. The prototype uses a 3.7 V LiPo battery, TP4056 charging module, DC-DC boost converter, MPU-6050 accelerometer, and a 17-LED WS2812B NeoPixel ring for real-time feedback.
+      The system determines whether the user is drinking by combining MPU-6050 accelerometer tilt data with decreases in measured water weight. SipSync then sends sip events and water-consumption data to the MyFitnessTech mobile app over Bluetooth Low Energy using the ESP32.
     </p>
-
+    
     <p>
-      I designed the full circuit, hand-soldered a working protoboard, and wrote C/C++ firmware for hydration feedback states such as drinking, not drinking, and empty. I also designed a custom KiCad PCB for a future compact version of the system.
+      SipSync is powered by a rechargeable 3.7 V LiPo battery connected to a TP4056 charging module and 5 V DC-DC boost converter. A WS2812B NeoPixel LED ring provides real-time feedback for states such as drinking, empty bottle, and ready to connect over Bluetooth. To reduce power draw, the LED ring turns on for 30 seconds during feedback events and then automatically shuts off.
     </p>
   </div>
 
@@ -289,17 +289,15 @@ footer{
 
   <div class="content-card">
     <p>
-      The early prototype was built on a breadboard to test the load cell, HX711 amplifier, accelerometer, NeoPixel ring, and ESP32 microcontroller. This allowed the hardware team to validate sensor behavior, power requirements, and communication between each subsystem before moving toward a more permanent build.
-    </p>
-
-    <p>
-      After validating the circuit, I moved the design onto a protoboard and hand-soldered the system to create a more reliable prototype. This step helped reduce loose wiring issues and made the device easier to test as a connected embedded system.
+      The first working prototype was implemented on a hand-soldered protoboard and currently functions as intended. The next revision is in progress using a custom KiCad PCB layout to make the hardware more compact and reliable.
     </p>
   </div>
 
   <div class="callout">
     <strong>Key contribution:</strong><br>
-    Designed and built embedded hardware for SipSync, integrating load sensing, accelerometer-based sip detection, BLE communication, NeoPixel feedback, LiPo power circuitry, soldered protoboard assembly, and custom KiCad PCB planning.
+    I Led a 3-person hardware team to develop the first working SipSync prototype, coordinating prototype tasks, debugging teammate hardware, supporting integration across multiple microcontrollers, and working with the organization founder on mobile app integration. Specifically, I implemented embedded hardware and firmware for BLE communication, MPU-6050 sip detection, HX711/load-cell weight
+    sensing, WS2812B NeoPixel status lighting, and 3.7V LiPo battery operation with TP4056 charging and 5V boost conversion. I also designed and hand-soldered the full working protoboard circuit and created a custom KiCad PCB layout for compact revision.
+    I improved prototype reliability by debugging MPU-6050 sip-detection false positives, calibrating weight sensing to 0.5% measurement error, implementing 15 g empty-bottle LED thresholding, and adding low-power LED shutoff after 30 seconds of inactivity.
   </div>
 
 </main>
