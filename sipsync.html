@@ -255,6 +255,22 @@ footer{
 
   <div class="gallery">
 
+    
+    <div class="figure">
+      <img src="sipsync-3d.png" alt="SipSync PCB 3D render">
+      <div class="caption">3D render of the custom SipSync PCB designed in KiCad</div>
+    </div>
+
+    <div class="figure">
+      <img src="sipsync-routing.png" alt="SipSync PCB routing layout in KiCad">
+      <div class="caption">Final 2-layer PCB routing with top (red), bottom (blue), and GND copper pour.</div>
+    </div>
+    
+    <div class="figure">
+      <img src="sipsync-schematic.png" alt="SipSync electrical schematic">
+      <div class="caption">Complete system schematic in KiCad</div>
+    </div>
+
     <div class="figure">
       <img src="loadCell.png" alt="Load cell Fusion 360 design">
       <div class="caption">Load cell Fusion design</div>
@@ -295,9 +311,10 @@ footer{
 
   <div class="callout">
     <strong>Key contribution:</strong><br>
-    I Led a 3-person hardware team to develop the first working SipSync prototype, coordinating prototype tasks, debugging teammate hardware, supporting integration across multiple microcontrollers, and working with the organization founder on mobile app integration. Specifically, I implemented embedded hardware and firmware for BLE communication, MPU-6050 sip detection, HX711/load-cell weight
-    sensing, WS2812B NeoPixel status lighting, and 3.7V LiPo battery operation with TP4056 charging and 5V boost conversion. I also designed and hand-soldered the full working protoboard circuit and created a custom KiCad PCB layout for compact revision.
-    I improved prototype reliability by debugging MPU-6050 sip-detection false positives, calibrating weight sensing to 0.5% measurement error, implementing 15 g empty-bottle LED thresholding, and adding low-power LED shutoff after 30 seconds of inactivity.
+  I led a three-person hardware team in developing the first working SipSync prototype, coordinating development tasks, debugging teammate hardware, supporting integration across multiple microcontrollers, and collaborating with the organization’s founder on mobile-app integration. 
+    I designed the embedded hardware and firmware for BLE communication, MPU-6050-based sip detection, HX711 load-cell weight sensing, WS2812B NeoPixel status lighting, and a 3.7 V LiPo power system using TP4056 charging and 5 V boost conversion. 
+    I also designed and hand-soldered the full protoboard prototype, then created a custom two-layer KiCad PCB with custom module footprints, routed power and signal traces, and added a ground plane for a more compact and manufacturable revision. 
+    I improved system reliability by reducing MPU-6050 false positives, calibrating weight measurements to 0.5% error, implementing an empty-bottle alert below 15 g, and adding a low-power LED shutoff after 30 seconds of inactivity.
   </div>
 
 </main>
