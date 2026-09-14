@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Embedded Edge-AI Node — Jonas Himawan</title>
+
+<style>
+@font-face {
+  font-family:'SF Pro Display';
+  src:local('SF Pro Display'),local('.SFNSDisplay'),local('SFProDisplay-Regular');
+  font-weight:400;
+}
+
+@font-face {
+  font-family:'SF Pro Display';
+  src:local('SF Pro Display Semibold'),local('.SFNSDisplay-Semibold');
+  font-weight:600;
+}
+
+@font-face {
+  font-family:'SF Pro Text';
+  src:local('SF Pro Text'),local('.SFNSText'),local('SFProText-Regular');
+  font-weight:400;
+}
+
+*,*::before,*::after{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+:root{
+  --white:#ffffff;
+  --off:#f7f6f4;
+  --purple:#1e0a3c;
+  --grape:#4b2e83;
+  --violet:#7c5cbf;
+  --lavender:#c4b5e8;
+  --black:#0a0a0a;
+  --gray:#6b6b6b;
+  --border:#e0dcea;
+}
+
+body{
+  background:var(--off);
+  color:var(--black);
+  font-family:'SF Pro Text',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  line-height:1.7;
+}
+
+/* ───────── NAV ───────── */
+
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:20;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:22px 52px;
+  background:rgba(30,10,60,.92);
+  backdrop-filter:blur(16px);
+}
+
+.nav-logo{
+  font-family:'SF Pro Display',-apple-system,system-ui,sans-serif;
+  font-size:15px;
+  font-weight:600;
+  color:var(--white);
+  text-decoration:none;
+}
+
+.nav-back{
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--white);
+  text-decoration:none;
+  border:1px solid rgba(255,255,255,.45);
+  padding:9px 18px;
+  transition:all .25s;
+}
+
+.nav-back:hover{
+  background:var(--white);
+  color:var(--purple);
+}
+
+/* ───────── HERO ───────── */
+
+.hero{
+  min-height:68vh;
+  padding:140px 52px 80px;
+  background:
+    radial-gradient(circle at 80% 25%,rgba(124,92,191,.18),transparent 32%),
+    linear-gradient(180deg,rgba(13,8,32,.96),rgba(30,10,60,.92));
+  color:var(--white);
+  display:flex;
+  align-items:end;
+}
+
+.hero-inner{
+  max-width:1050px;
+}
+
+.eyebrow{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--lavender);
+  margin-bottom:18px;
+}
+
+h1{
+  font-family:'SF Pro Display',-apple-system,system-ui,sans-serif;
+  font-size:clamp(42px,6.5vw,88px);
+  letter-spacing:-.055em;
+  line-height:.96;
+  font-weight:600;
+}
+
+.hero p{
+  max-width:790px;
+  margin-top:26px;
+  color:rgba(255,255,255,.72);
+  font-size:18px;
+}
+
+/* ───────── CONTENT ───────── */
+
+main{
+  padding:80px 52px;
+  max-width:1180px;
+  margin:0 auto;
+}
+
+.section-label{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--violet);
+  margin-bottom:12px;
+}
+
+h2{
+  font-family:'SF Pro Display',-apple-system,system-ui,sans-serif;
+  font-size:clamp(30px,4vw,52px);
+  letter-spacing:-.035em;
+  color:var(--purple);
+  line-height:1.05;
+  margin-bottom:28px;
+}
+
+.content-card{
+  background:var(--white);
+  border:1px solid var(--border);
+  padding:34px;
+  margin-top:24px;
+}
+
+.content-card p+p{
+  margin-top:18px;
+}
+
+/* ───────── TAGS ───────── */
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:26px;
+}
+
+.tag{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--grape);
+  background:#e8e6f0;
+  padding:6px 12px;
+}
+
+/* ───────── GALLERY ───────── */
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:24px;
+  margin:42px 0;
+}
+
+.figure{
+  background:var(--white);
+  border:1px solid var(--border);
+  padding:16px;
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+
+.figure:hover{
+  transform:translateY(-3px);
+  box-shadow:0 16px 40px rgba(30,10,60,.08);
+}
+
+.figure img{
+  width:100%;
+  height:330px;
+  object-fit:contain;
+  display:block;
+  background:#f1eff6;
+}
+
+.caption{
+  font-size:12px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--gray);
+  margin-top:10px;
+}
+
+/* ───────── CALLOUT ───────── */
+
+.callout{
+  background:var(--purple);
+  color:var(--white);
+  padding:30px;
+  margin-top:30px;
+}
+
+.callout strong{
+  color:var(--lavender);
+}
+
+/* ───────── FOOTER ───────── */
+
+footer{
+  padding:28px 52px;
+  background:var(--black);
+  color:rgba(255,255,255,.35);
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+/* ───────── MOBILE ───────── */
+
+@media(max-width:860px){
+
+  nav{
+    padding:16px 24px;
+  }
+
+  .hero{
+    padding:120px 24px 60px;
+  }
+
+  main{
+    padding:60px 24px;
+  }
+
+  .gallery{
+    grid-template-columns:1fr;
+  }
+
+  .figure img{
+    height:auto;
+    min-height:240px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+
+<nav>
+  <a class="nav-logo" href="index.html">Jonas Himawan</a>
+  <a class="nav-back" href="index.html#projects">Back to Projects</a>
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div class="hero-inner">
+
+    <div class="eyebrow">
+      ESP32-S3 · KiCad · 4-Layer PCB · USB-C · Power Budgeting
+    </div>
+
+    <h1>Embedded Edge-AI Node</h1>
+
+    <p>
+      I designed and routed a custom four-layer PCB centered around the ESP32-S3
+      for an embedded edge-AI system. The board integrates processing,
+      wireless communication, camera connectivity, audio, display support,
+      user controls, and power-management circuitry into a single compact
+      hardware platform.
+    </p>
+
+    <div class="tags">
+      <span class="tag">ESP32-S3</span>
+      <span class="tag">KiCad</span>
+      <span class="tag">4-Layer PCB</span>
+      <span class="tag">Schematic Capture</span>
+      <span class="tag">PCB Routing</span>
+      <span class="tag">USB-C</span>
+      <span class="tag">Power Budgeting</span>
+      <span class="tag">ERC / DRC</span>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- MAIN -->
+
+<main>
+
+  <!-- PROJECT DETAILS -->
+
+  <div class="section-label">Project Details</div>
+
+  <h2>
+    Designing a four-layer embedded platform from system architecture to PCB layout.
+  </h2>
+
+  <div class="content-card">
+
+    <p>
+      The goal of this project was to design a complete embedded hardware
+      platform around the ESP32-S3 capable of supporting an edge-AI system.
+      Rather than designing only an individual circuit, I approached the project
+      at the system level by determining how processing, peripherals, power,
+      communication interfaces, and user inputs would connect together.
+    </p>
+
+    <p>
+      The board integrates the ESP32-S3 with Wi-Fi capability, a camera
+      interface, speaker output, display connectivity, power switches, and
+      physical input buttons. I first developed the system architecture and
+      power/data relationships before translating the design into a complete
+      KiCad schematic.
+    </p>
+
+    <p>
+      Because several peripherals could operate simultaneously, power
+      requirements were an important part of the design process. I performed
+      worst-case power-budget calculations to estimate the maximum expected
+      system current and evaluate whether the power architecture could reliably
+      support the ESP32-S3 and connected peripherals.
+    </p>
+
+    <p>
+      After completing the schematic, I designed and routed the PCB using a
+      four-layer stack-up. The additional internal layers allowed the board to
+      use dedicated power and ground regions while keeping signal routing on
+      the outer layers more organized. I completed electrical-rule and
+      design-rule checks to verify the schematic and PCB layout before
+      generating the final 3D board model.
+    </p>
+
+  </div>
+
+
+  <!-- DESIGN PROCESS -->
+
+  <div class="section-label" style="margin-top:54px;">Design Process</div>
+
+  <h2>
+    From power calculations and schematic capture to a fully routed four-layer board.
+  </h2>
+
+
+  <!-- FOUR IMAGES -->
+
+  <div class="gallery">
+
+    <!-- IMAGE 1 -->
+
+    <div class="figure">
+      <img
+        src="power-budget.png"
+        alt="Power budget calculations for the embedded edge-AI PCB"
+      >
+      <div class="caption">
+        Worst-case power-budget calculations
+      </div>
+    </div>
+
+
+    <!-- IMAGE 2 -->
+
+    <div class="figure">
+      <img
+        src="edge-ai-schematic.png"
+        alt="KiCad schematic for the ESP32-S3 edge-AI board"
+      >
+      <div class="caption">
+        Complete KiCad schematic
+      </div>
+    </div>
+
+
+    <!-- IMAGE 3 -->
+
+    <div class="figure">
+      <img
+        src="edge-ai-pcb-layout.png"
+        alt="Four-layer PCB layout and routing in KiCad"
+      >
+      <div class="caption">
+        4-layer PCB design and routing
+      </div>
+    </div>
+
+
+    <!-- IMAGE 4 -->
+
+    <div class="figure">
+      <img
+        src="edge-ai-3d.png"
+        alt="3D render of the completed ESP32-S3 PCB"
+      >
+      <div class="caption">
+        Final 3D PCB render
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- POWER DESIGN -->
+
+  <div class="section-label" style="margin-top:54px;">Power Architecture</div>
+
+  <h2>
+    Designing around worst-case system power requirements.
+  </h2>
+
+  <div class="content-card">
+
+    <p>
+      Before finalizing the schematic, I created a power and data architecture
+      for the complete system. Each major subsystem was considered individually,
+      including the ESP32-S3, camera, display, audio hardware, and other
+      peripherals connected to the board.
+    </p>
+
+    <p>
+      I then performed worst-case power-budget calculations by considering the
+      maximum expected current draw of the major components. This helped guide
+      decisions around the board's power path, switching circuitry, and
+      distribution of power to the different peripherals.
+    </p>
+
+    <p>
+      Performing the power analysis before PCB routing helped ensure that the
+      hardware architecture was based on the electrical requirements of the
+      complete system rather than treating the power circuitry as an
+      afterthought.
+    </p>
+
+  </div>
+
+
+  <!-- SCHEMATIC -->
+
+  <div class="section-label" style="margin-top:54px;">Schematic Design</div>
+
+  <h2>
+    Turning the system architecture into a complete electrical design.
+  </h2>
+
+  <div class="content-card">
+
+    <p>
+      I translated the system architecture into a complete schematic in KiCad,
+      connecting the ESP32-S3 to the board's camera, display, speaker,
+      user-interface, and power-management circuitry.
+    </p>
+
+    <p>
+      Organizing the design at the schematic level made it easier to separate
+      the major functional blocks and understand how power and data moved
+      throughout the system.
+    </p>
+
+    <p>
+      I used KiCad's Electrical Rules Checker to identify potential connection
+      and electrical issues before moving into the physical PCB-layout stage.
+    </p>
+
+  </div>
+
+
+  <!-- PCB ROUTING -->
+
+  <div class="section-label" style="margin-top:54px;">PCB Layout</div>
+
+  <h2>
+    Component placement and routing across four copper layers.
+  </h2>
+
+  <div class="content-card">
+
+    <p>
+      After validating the schematic, I moved into PCB layout and selected a
+      four-layer board architecture. Components were placed based on their
+      functional relationships, connector accessibility, and routing
+      requirements.
+    </p>
+
+    <p>
+      I routed the board in KiCad while managing connections between the
+      ESP32-S3 and the various peripherals. The multilayer design allowed power,
+      ground, and signals to be distributed more efficiently than they could
+      have been on a simpler two-layer layout.
+    </p>
+
+    <p>
+      Once routing was complete, I ran KiCad's Design Rules Checker to verify
+      clearances, connections, and layout constraints. I then generated the
+      board's 3D model to visually inspect component placement and the final
+      physical design.
+    </p>
+
+  </div>
+
+
+  <!-- KEY CONTRIBUTION -->
+
+  <div class="callout">
+
+    <strong>Key contribution:</strong><br>
+
+    Designed and routed a custom four-layer ESP32-S3 PCB in KiCad for an
+    embedded edge-AI platform, integrating Wi-Fi, camera connectivity, speaker
+    output, display support, power switches, and input controls. Developed the
+    system power/data architecture, performed worst-case power-budget
+    calculations, and validated the completed schematic and PCB layout using
+    ERC and DRC.
+
+  </div>
+
+</main>
+
+
+<footer>
+  © 2026 Jonas Himawan · Embedded Edge-AI Node
+</footer>
+
+</body>
+</html>
