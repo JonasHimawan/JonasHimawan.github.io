@@ -336,38 +336,21 @@ footer{
 
   <div class="content-card">
 
-    <p>
-      The goal of this project was to design a complete embedded hardware
-      platform around the ESP32-S3 capable of supporting an edge-AI system.
-      Rather than designing only an individual circuit, I approached the project
-      at the system level by determining how processing, peripherals, power,
-      communication interfaces, and user inputs would connect together.
-    </p>
-
-    <p>
-      The board integrates the ESP32-S3 with Wi-Fi capability, a camera
-      interface, speaker output, display connectivity, power switches, and
-      physical input buttons. I first developed the system architecture and
-      power/data relationships before translating the design into a complete
-      KiCad schematic.
-    </p>
-
-    <p>
-      Because several peripherals could operate simultaneously, power
-      requirements were an important part of the design process. I performed
-      worst-case power-budget calculations to estimate the maximum expected
-      system current and evaluate whether the power architecture could reliably
-      support the ESP32-S3 and connected peripherals.
-    </p>
-
-    <p>
-      After completing the schematic, I designed and routed the PCB using a
-      four-layer stack-up. The additional internal layers allowed the board to
-      use dedicated power and ground regions while keeping signal routing on
-      the outer layers more organized. I completed electrical-rule and
-      design-rule checks to verify the schematic and PCB layout before
-      generating the final 3D board model.
-    </p>
+  <p> 
+  This project started as a <strong>48-hour PCB design challenge</strong> to turn an idea into a complete, routed multilayer board in just two days. I decided to build an embedded edge-AI node, a compact system that could combine local processing, Wi-Fi connectivity, a camera, display, audio, and physical user controls on a single custom PCB. Beyond completing the board, my goal was to challenge myself to make the major system-level decisions from scratch rather than starting from an existing reference design. 
+</p> 
+ 
+<p> 
+  I began by defining what the system needed to do and then selecting the hardware around those requirements. I chose the <strong>ESP32-S3</strong> as the core processor because it gave me the wireless connectivity and embedded capabilities I needed while supporting the peripheral interfaces required by the rest of the system. From there, I selected and connected the camera interface, display, speaker circuitry, power switches, and input buttons, building a power-and-data architecture that showed how every subsystem would interact before I began the schematic. 
+</p> 
+ 
+<p> 
+  One of the biggest design questions was power. With the processor, wireless communication, camera, display, audio, and other peripherals potentially operating at the same time, I could not simply assume that the power system would be sufficient. I calculated the <strong>worst-case current draw</strong> of the major components and built a power budget for the complete system. That analysis helped me reason through the power architecture and make sure the board was designed around the electrical demands of the system rather than treating power as an afterthought. 
+</p> 
+ 
+<p> 
+  Once the architecture was established, I translated the system into a complete KiCad schematic and then moved into physical PCB design. I chose a <strong>four-layer stack-up</strong> so I could dedicate internal layers to power and ground while using the outer layers for component placement and signal routing. Working under the 48-hour constraint forced me to make placement and routing decisions quickly while still maintaining a clean, manufacturable design. I finished by running ERC and DRC checks and generating the final 3D model, taking the project from an idea to a complete four-layer PCB design within the challenge window. 
+</p> 
 
   </div>
 
@@ -377,7 +360,7 @@ footer{
   <div class="section-label" style="margin-top:54px;">Design Process</div>
 
   <h2>
-    From power calculations and schematic capture to a fully routed four-layer board.
+    Power calculations and schematic to a routed four-layer board.
   </h2>
 
 
@@ -520,7 +503,7 @@ footer{
   <div class="content-card">
 
     <p>
-      I translated the system architecture into a complete schematic in KiCad,
+      I translated the system into a complete schematic in KiCad,
       connecting the ESP32-S3 to the board's camera, display, speaker,
       user-interface, and power-management circuitry.
     </p>
@@ -551,7 +534,7 @@ footer{
 
     <p>
       After validating the schematic, I moved into PCB layout and selected a
-      four-layer board architecture. Components were placed based on their
+      four-layer board. Components were placed based on their
       functional relationships, connector accessibility, and routing
       requirements.
     </p>
